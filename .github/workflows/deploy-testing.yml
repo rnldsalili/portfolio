@@ -1,0 +1,173 @@
+name: Deploy to Testing
+
+on:
+    push:
+        branches: [main]
+        paths-ignore:
+            - '.github/workflows/deploy-testing.yml'
+
+env:
+    NODE_VERSION: 22
+    PNPM_VERSION: 10.11.0
+
+jobs:
+    deploy:
+        runs-on: ubuntu-latest
+        environment: testing
+        name: Deploy to Testing Environment
+
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v4
+              with:
+                  fetch-depth: 0
+
+            - name: Detect changes
+              uses: dorny/paths-filter@v3
+              id: changes
+              with:
+                  filters: |
+                      portfolio:
+                        - 'apps/portfolio/**'
+                        - 'packages/**'
+                        - 'pnpm-lock.yaml'
+                        - 'package.json'
+                      shared:
+                        - 'packages/**'
+                        - 'pnpm-lock.yaml'
+                        - 'package.json'
+
+            - name: Setup Node.js
+              uses: actions/setup-node@v4
+              with:
+                  node-version: ${{ env.NODE_VERSION }}
+
+            - name: Setup PNPM
+              uses: pnpm/action-setup@v4
+              with:
+                  version: ${{ env.PNPM_VERSION }}
+
+            - name: Get PNPM store directory
+              shell: bash
+              run: echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
+
+            - name: Cache PNPM store
+              uses: actions/cache@v4
+              with:
+                  path: ${{ env.STORE_PATH }}
+                  key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+                  restore-keys: |
+                      ${{ runner.os }}-pnpm-store-
+
+            - name: Install dependencies
+              if: steps.changes.outputs.portfolio == 'true' || steps.changes.outputs.shared == 'true'
+              run: pnpm install --frozen-lockfile
+
+            - name: Generate Prisma Client
+              working-directory: apps/api
+              run: pnpm prisma generate
+
+            - name: Configure deployments
+              if: steps.changes.outputs.portfolio == 'true'
+              run: |
+                  cat > configure-deployments.ts << 'EOF'
+                  import { writeFileSync, readFileSync } from 'fs';
+                  import { join } from 'path';
+
+                  interface WranglerConfig {
+                    name: string;
+                    vars?: Record<string, any>;
+                    routes: Array<{ pattern: string; custom_domain: boolean }>;
+                    kv_namespaces?: Array<{ binding: string; id: string }>;
+                    d1_databases?: Array<{ binding: string; database_name: string; database_id: string }>;
+                  }
+
+                  const configs = {
+                    portfolio: {
+                      path: 'apps/portfolio/wrangler.json',
+                      name: 'portfolio-portfolio-testing',
+                      route: 'portfolio-testing.trackgastos.com'
+                    },
+                  };
+
+                  const hasChanges = {
+                    portfolio: process.env.portfolio_CHANGED === 'true'
+                  };
+
+                  // Configure simple apps (portfolio)
+                  for (const [key, { path, name, route }] of Object.entries(configs).slice(0, 2)) {
+                    const appKey = key === 'portfolio' ? 'portfolio' : key;
+                    if (hasChanges[appKey]) {
+                      const config: WranglerConfig = JSON.parse(readFileSync(path, 'utf-8'));
+                      config.name = name;
+                      config.routes.push({ pattern: route, custom_domain: true });
+                      writeFileSync(path, JSON.stringify(config, null, 2));
+                    }
+                  }
+
+                  EOF
+
+                  npx tsx configure-deployments.ts
+              env:
+                  portfolio_CHANGED: ${{ steps.changes.outputs.portfolio }}
+
+            - name: Build applications
+              if: steps.changes.outputs.portfolio == 'true' ||  steps.changes.outputs.shared == 'true'
+              run: |
+                  # Build only changed apps
+                  JOBS=()
+
+                  if [[ "${{ steps.changes.outputs.portfolio || steps.changes.outputs.shared }}" == "true" ]]; then
+                    echo "🔨 Building portfolio..."
+                    pnpm run build --filter=@portfolio/portfolio
+                    JOBS+=($!)
+                  fi
+
+                  for job in "${JOBS[@]}"; do
+                    wait $job
+                  done
+
+            - name: Deploy frontend applications
+              if: steps.changes.outputs.portfolio == 'true'
+              env:
+                  CLOUDFLARE_ACCOUNT_ID: ${{ vars.CLOUDFLARE_ACCOUNT_ID }}
+                  CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+              run: |
+                  # Deploy changed apps in parallel
+                  JOBS=()
+
+                  if [[ "${{ steps.changes.outputs.portfolio }}" == "true" ]]; then
+                    echo "🚀 Deploying portfolio app..."
+                    (cd apps/portfolio && pnpm run deploy) &
+                    JOBS+=($!)
+                  fi
+
+                  # Wait for all jobs to complete
+                  for job in "${JOBS[@]}"; do
+                    wait $job
+                  done
+
+            - name: Deployment summary
+              if: steps.changes.outputs.portfolio == 'true'
+              run: |
+                  echo "✅ Deployment completed successfully!"
+                  echo ""
+                  echo "📦 **Deployed Components:**"
+
+
+                  if [[ "${{ steps.changes.outputs.portfolio || steps.changes.outputs.shared }}" == "true" ]]; then
+                    echo "  - 🏠 portfolio: https://portfolio-testing.trackgastos.com"
+                  fi
+
+                  echo ""
+                  echo "⏭️  **Skipped (no changes):**"
+
+                  if [[ "${{ steps.changes.outputs.portfolio || steps.changes.outputs.shared }}" != "true" ]]; then
+                    echo "  - 🏠 portfolio"
+                  fi
+
+            - name: No changes detected
+              if: steps.changes.outputs.portfolio != 'true' && steps.changes.outputs.shared != 'true'
+              run: |
+                  echo "🎯 No changes detected in any deployable apps"
+                  echo "✨ Workflow completed without deployments"

@@ -1,0 +1,40 @@
+{
+  "name": "@portfolio/ui",
+  "version": "1.0.0",
+  "type": "module",
+  "exports": {
+    "./*": "./src/*.ts",
+    "./components/*": "./src/components/*.tsx",
+    "./globals.css": "./src/styles/globals.css",
+    "./hooks/*": "./src/hooks/*.ts",
+    "./lib/*": "./src/lib/*.ts",
+    "./postcss.config": "./postcss.config.mjs"
+  },
+  "dependencies": {
+    "@radix-ui/react-separator": "^1.1.7",
+    "@radix-ui/react-slot": "^1.2.3",
+    "@tailwindcss/postcss": "^4",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "date-fns": "^4.1.0",
+    "lucide-react": "^0.513.0",
+    "postcss": "^8.5.4",
+    "tailwind-merge": "^3.3.0",
+    "tailwindcss": "^4.1.8",
+    "tailwindcss-animate": "^1.0.7"
+  },
+  "devDependencies": {
+    "@portfolio/eslint-config": "workspace:*",
+    "@portfolio/typescript-config": "workspace:*",
+    "@types/node": "^22",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9.28.0",
+    "eslint-config-next": "15.3.3",
+    "typescript": "^5"
+  },
+  "peerDependencies": {
+    "react": ">=19.0.0",
+    "react-router": ">=7.0.0"
+  }
+}

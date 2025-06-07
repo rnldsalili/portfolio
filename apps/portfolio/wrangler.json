@@ -1,0 +1,7 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "portfolio-portfolio",
+  "compatibility_date": "2025-04-26",
+  "main": "workers/app.ts",
+  "routes": []
+}
