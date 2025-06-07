@@ -3,6 +3,7 @@ name: Deploy to Production
 on:
     push:
         branches: [production]
+    workflow_dispatch:
 
 env:
     NODE_VERSION: 22
@@ -19,21 +20,6 @@ jobs:
               uses: actions/checkout@v4
               with:
                   fetch-depth: 0
-
-            - name: Detect changes
-              uses: dorny/paths-filter@v3
-              id: changes
-              with:
-                  filters: |
-                      portfolio:
-                        - 'apps/portfolio/**'
-                        - 'packages/**'
-                        - 'pnpm-lock.yaml'
-                        - 'package.json'
-                      shared:
-                        - 'packages/**'
-                        - 'pnpm-lock.yaml'
-                        - 'package.json'
 
             - name: Setup Node.js
               uses: actions/setup-node@v4
@@ -58,11 +44,9 @@ jobs:
                       ${{ runner.os }}-pnpm-store-
 
             - name: Install dependencies
-              if: steps.changes.outputs.portfolio == 'true' || steps.changes.outputs.shared == 'true'
               run: pnpm install --frozen-lockfile
 
             - name: Configure deployments
-              if: steps.changes.outputs.portfolio == 'true'
               run: |
                   cat > configure-deployments.ts << 'EOF'
                   import { writeFileSync, readFileSync } from 'fs';
@@ -85,64 +69,48 @@ jobs:
                     },
                   };
 
-                  const hasChanges = {
-                    portfolio: process.env.portfolio_CHANGED === 'true'
-                  };
-
                   // Configure simple apps (portfolio)
                   for (const [key, { path, name, route, route2 }] of Object.entries(configs).slice(0, 2)) {
                     const appKey = key === 'portfolio' ? 'portfolio' : key;
-                    if (hasChanges[appKey]) {
-                      const config: WranglerConfig = JSON.parse(readFileSync(path, 'utf-8'));
-                      config.name = name;
-                      config.routes.push({ pattern: route, custom_domain: true });
+                    const config: WranglerConfig = JSON.parse(readFileSync(path, 'utf-8'));
+                    config.name = name;
+                    config.routes.push({ pattern: route, custom_domain: true });
 
-                      if (route2) {
-                        config.routes.push({ pattern: route2, custom_domain: true });
-                      }
-                        
-                      console.log("🚀 ~ deploy-production.yml ~ config:", config)
-
-                      writeFileSync(path, JSON.stringify(config, null, 2));
+                    if (route2) {
+                      config.routes.push({ pattern: route2, custom_domain: true });
                     }
+                      
+                    console.log("🚀 ~ deploy-production.yml ~ config:", config)
+                    writeFileSync(path, JSON.stringify(config, null, 2));
                   }
 
                   EOF
 
                   npx tsx configure-deployments.ts
-              env:
-                  portfolio_CHANGED: ${{ steps.changes.outputs.portfolio }}
 
             - name: Build applications
-              if: steps.changes.outputs.portfolio == 'true' ||  steps.changes.outputs.shared == 'true'
               run: |
-                  # Build only changed apps
                   JOBS=()
 
-                  if [[ "${{ steps.changes.outputs.portfolio || steps.changes.outputs.shared }}" == "true" ]]; then
-                    echo "🔨 Building portfolio..."
-                    pnpm run build --filter=@portfolio/portfolio
-                    JOBS+=($!)
-                  fi
+                  echo "🔨 Building portfolio..."
+                  pnpm run build --filter=@portfolio/portfolio
+                  JOBS+=($!)
 
                   for job in "${JOBS[@]}"; do
                     wait $job
                   done
 
             - name: Deploy frontend applications
-              if: steps.changes.outputs.portfolio == 'true'
               env:
                   CLOUDFLARE_ACCOUNT_ID: ${{ vars.CLOUDFLARE_ACCOUNT_ID }}
                   CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
               run: |
-                  # Deploy changed apps in parallel
+                  # Deploy apps in parallel
                   JOBS=()
 
-                  if [[ "${{ steps.changes.outputs.portfolio }}" == "true" ]]; then
-                    echo "🚀 Deploying portfolio app..."
-                    (cd apps/portfolio && pnpm run deploy) &
-                    JOBS+=($!)
-                  fi
+                  echo "🚀 Deploying portfolio app..."
+                  (cd apps/portfolio && pnpm run deploy) &
+                  JOBS+=($!)
 
                   # Wait for all jobs to complete
                   for job in "${JOBS[@]}"; do
@@ -150,26 +118,9 @@ jobs:
                   done
 
             - name: Deployment summary
-              if: steps.changes.outputs.portfolio == 'true'
               run: |
                   echo "✅ Deployment completed successfully!"
                   echo ""
                   echo "📦 **Deployed Components:**"
 
-
-                  if [[ "${{ steps.changes.outputs.portfolio || steps.changes.outputs.shared }}" == "true" ]]; then
-                    echo "  - 🏠 portfolio: https://ronald.it.com"
-                  fi
-
-                  echo ""
-                  echo "⏭️  **Skipped (no changes):**"
-
-                  if [[ "${{ steps.changes.outputs.portfolio || steps.changes.outputs.shared }}" != "true" ]]; then
-                    echo "  - 🏠 portfolio"
-                  fi
-
-            - name: No changes detected
-              if: steps.changes.outputs.portfolio != 'true' && steps.changes.outputs.shared != 'true'
-              run: |
-                  echo "🎯 No changes detected in any deployable apps"
-                  echo "✨ Workflow completed without deployments"
+                  echo "  - 🏠 portfolio: https://ronald.it.com"
