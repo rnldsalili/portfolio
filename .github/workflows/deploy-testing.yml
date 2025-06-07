@@ -82,7 +82,7 @@ jobs:
                     portfolio: {
                       path: 'apps/portfolio/wrangler.json',
                       name: 'portfolio-portfolio-testing',
-                      route: 'portfolio-testing.trackgastos.com'
+                      route: 'ronald.it.com'
                     },
                   };
 
@@ -152,7 +152,7 @@ jobs:
 
 
                   if [[ "${{ steps.changes.outputs.portfolio || steps.changes.outputs.shared }}" == "true" ]]; then
-                    echo "  - 🏠 portfolio: https://portfolio-testing.trackgastos.com"
+                    echo "  - 🏠 portfolio: https://ronald.it.com"
                   fi
 
                   echo ""
