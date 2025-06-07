@@ -1,9 +1,17 @@
 name: Deploy to Production
 
 on:
-    push:
+    pull_request:
+        types: [closed]
         branches: [production]
+        paths-ignore:
+            - '.github/workflows/deploy-testing.yml'
     workflow_dispatch:
+        inputs:
+            force_production:
+                description: 'Always deploy from production branch'
+                required: false
+                default: 'true'
 
 env:
     NODE_VERSION: 22
