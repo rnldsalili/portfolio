@@ -100,6 +100,8 @@ jobs:
                       if (route2) {
                         config.routes.push({ pattern: route2, custom_domain: true });
                       }
+                        
+                      console.log("🚀 ~ deploy-production.yml ~ config:", config)
 
                       writeFileSync(path, JSON.stringify(config, null, 2));
                     }
