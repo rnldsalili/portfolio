@@ -5,7 +5,7 @@ on:
         types: [closed]
         branches: [production]
         paths-ignore:
-            - '.github/workflows/deploy-testing.yml'
+            - '.github/workflows/deploy-production.yml'
     workflow_dispatch:
 
 env:
