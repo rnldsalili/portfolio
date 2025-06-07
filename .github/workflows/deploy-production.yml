@@ -7,11 +7,6 @@ on:
         paths-ignore:
             - '.github/workflows/deploy-testing.yml'
     workflow_dispatch:
-        inputs:
-            force_production:
-                description: 'Always deploy from production branch'
-                required: false
-                default: 'true'
 
 env:
     NODE_VERSION: 22
