@@ -63,10 +63,6 @@ jobs:
               if: steps.changes.outputs.portfolio == 'true' || steps.changes.outputs.shared == 'true'
               run: pnpm install --frozen-lockfile
 
-            - name: Generate Prisma Client
-              working-directory: apps/api
-              run: pnpm prisma generate
-
             - name: Configure deployments
               if: steps.changes.outputs.portfolio == 'true'
               run: |
