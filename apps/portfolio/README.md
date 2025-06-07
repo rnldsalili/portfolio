@@ -14,7 +14,7 @@ A modern, production-ready template for building full-stack React applications u
 - 🎉 TailwindCSS for styling
 - 📖 [React Router docs](https://reactrouter.com/)
 
-## Getting Started
+## Getting Startedd
 
 ### Installation
 
