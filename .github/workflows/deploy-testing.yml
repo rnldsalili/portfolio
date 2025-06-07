@@ -152,7 +152,7 @@ jobs:
 
 
                   if [[ "${{ steps.changes.outputs.portfolio || steps.changes.outputs.shared }}" == "true" ]]; then
-                    echo "  - 🏠 portfolio: https://ronald.it.com"
+                    echo "  - 🏠 portfolio: https://testing.ronald.it.com"
                   fi
 
                   echo ""
