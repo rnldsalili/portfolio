@@ -1,10 +1,8 @@
-name: Deploy to Testing
+name: Deploy to Production
 
 on:
     push:
-        branches: [main]
-        paths-ignore:
-            - '.github/workflows/deploy-testing.yml'
+        branches: [production]
 
 env:
     NODE_VERSION: 22
@@ -13,8 +11,8 @@ env:
 jobs:
     deploy:
         runs-on: ubuntu-latest
-        environment: testing
-        name: Deploy to Testing Environment
+        environment: production
+        name: Deploy to Production Environment
 
         steps:
             - name: Checkout code
@@ -81,8 +79,9 @@ jobs:
                   const configs = {
                     portfolio: {
                       path: 'apps/portfolio/wrangler.json',
-                      name: 'portfolio-portfolio-testing',
-                      route: 'testing.ronald.it.com'
+                      name: 'portfolio-portfolio-production',
+                      route: 'ronald.it.com',
+                      route2: 'www.ronald.it.com'
                     },
                   };
 
@@ -91,12 +90,17 @@ jobs:
                   };
 
                   // Configure simple apps (portfolio)
-                  for (const [key, { path, name, route }] of Object.entries(configs).slice(0, 2)) {
+                  for (const [key, { path, name, route, route2 }] of Object.entries(configs).slice(0, 2)) {
                     const appKey = key === 'portfolio' ? 'portfolio' : key;
                     if (hasChanges[appKey]) {
                       const config: WranglerConfig = JSON.parse(readFileSync(path, 'utf-8'));
                       config.name = name;
                       config.routes.push({ pattern: route, custom_domain: true });
+
+                      if (route2) {
+                        config.routes.push({ pattern: route2, custom_domain: true });
+                      }
+
                       writeFileSync(path, JSON.stringify(config, null, 2));
                     }
                   }
