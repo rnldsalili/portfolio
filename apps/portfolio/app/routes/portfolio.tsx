@@ -70,6 +70,8 @@ export function meta() {
     ];
 }
 
+const EMAIL = 'ronaldsalili1@gmail.com';
+
 export default function Portfolio() {
     const timelineRef = useRef<HTMLDivElement>(null);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -277,13 +279,15 @@ export default function Portfolio() {
 
                             {/* CTA Button */}
                             <div className="ml-4 pl-4 border-l border-green-200">
-                                <Button
-                                    className="bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white shadow-md hover:shadow-lg transition-all duration-300 transform hover:scale-105"
-                                    size="sm"
-                                >
-                                    <Mail className="w-4 h-4 mr-2" />
-                                    Hire Me
-                                </Button>
+                                <Link to={`mailto:${EMAIL}`}>
+                                    <Button
+                                        className="bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white shadow-md hover:shadow-lg transition-all duration-300 transform hover:scale-105"
+                                        size="sm"
+                                    >
+                                        <Mail className="w-4 h-4 mr-2" />
+                                        Get In Touch
+                                    </Button>
+                                </Link>
                             </div>
                         </div>
 
@@ -356,16 +360,18 @@ export default function Portfolio() {
                                     Education
                                 </Link>
                                 <div className="pt-2">
-                                    <Button
-                                        className="w-full bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white shadow-md"
-                                        size="sm"
-                                        onClick={() =>
-                                            setIsMobileMenuOpen(false)
-                                        }
-                                    >
-                                        <Mail className="w-4 h-4 mr-2" />
-                                        Hire Me
-                                    </Button>
+                                    <Link to={`mailto:${EMAIL}`}>
+                                        <Button
+                                            className="w-full bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white shadow-md"
+                                            size="sm"
+                                            onClick={() =>
+                                                setIsMobileMenuOpen(false)
+                                            }
+                                        >
+                                            <Mail className="w-4 h-4 mr-2" />
+                                            Get In Touch
+                                        </Button>
+                                    </Link>
                                 </div>
                             </div>
                         </div>
@@ -394,13 +400,15 @@ export default function Portfolio() {
                         </p>
                     </div>
                     <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                        <Button
-                            className="bg-green-700 hover:bg-green-800 transition-all duration-300 transform hover:scale-105 shadow-lg"
-                            size="lg"
-                        >
-                            <Mail className="w-5 h-5 mr-2" />
-                            Get In Touch
-                        </Button>
+                        <Link to={`mailto:${EMAIL}`}>
+                            <Button
+                                className="bg-green-700 hover:bg-green-800 transition-all duration-300 transform hover:scale-105 shadow-lg"
+                                size="lg"
+                            >
+                                <Mail className="w-5 h-5 mr-2" />
+                                Get In Touch
+                            </Button>
+                        </Link>
                         <Button
                             className="transition-all duration-300 transform hover:scale-105 hover:border-green-700 hover:text-green-700 shadow-lg"
                             size="lg"
@@ -485,7 +493,7 @@ export default function Portfolio() {
                         {experience.map((job, index) => (
                             <div className="timeline-item" key={index}>
                                 <div className="timeline-marker" />
-                                <Card className="timeline-content border-0 overflow-hidden">
+                                <Card className="timeline-content border-0 overflow-hidden gap-0">
                                     <CardHeader className="py-4 bg-gradient-to-r from-green-600 to-emerald-600 text-white">
                                         <div className="flex items-center justify-between flex-wrap gap-2">
                                             <div className="flex items-center gap-3">
@@ -682,9 +690,9 @@ export default function Portfolio() {
                                     <Mail className="w-4 h-4" />
                                     <Link
                                         className="hover:text-white transition-colors"
-                                        to="mailto:ronaldsalili1@gmail.com"
+                                        to={`mailto:${EMAIL}`}
                                     >
-                                        ronaldsalili1@gmail.com
+                                        {EMAIL}
                                     </Link>
                                 </div>
                                 <div className="flex items-center gap-2 text-green-300">
