@@ -28,17 +28,6 @@ import { Link } from 'react-router';
 
 import { SectionObserver } from '@/portfolio/components/section-observer';
 
-export function meta() {
-    return [
-        { title: 'Portfolio - Ronald Salili' },
-        {
-            name: 'description',
-            content:
-                'Full-stack developer specializing in the JavaScript and TypeScript ecosystem. Skilled in delivering scalable web and mobile applications with modern frameworks and tools.',
-        },
-    ];
-}
-
 export default function Portfolio() {
     const timelineRef = useRef<HTMLDivElement>(null);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
