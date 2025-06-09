@@ -28,6 +28,48 @@ import { Link } from 'react-router';
 
 import { SectionObserver } from '@/portfolio/components/section-observer';
 
+export function meta() {
+    return [
+        { title: 'Ronald | IT Professional Portfolio' },
+        {
+            name: 'description',
+            content:
+                'Explore the portfolio of Ronald, an IT professional specializing in innovative solutions, web development, and technology consulting. Discover projects, skills, and experience.',
+        },
+
+        // Open Graph / Facebook / LinkedIn
+        { property: 'og:type', content: 'website' },
+        { property: 'og:url', content: 'https://www.ronald.it.com/' },
+        { property: 'og:title', content: 'Ronald | IT Professional Portfolio' },
+        {
+            property: 'og:description',
+            content:
+                'Explore the portfolio of Ronald, an IT professional specializing in innovative solutions, web development, and technology consulting. Discover projects, skills, and experience.',
+        },
+        {
+            property: 'og:image',
+            content: 'https://www.ronald.it.com/og-image.webp',
+        },
+
+        // Twitter
+        { name: 'twitter:card', content: 'summary_large_image' },
+        { name: 'twitter:url', content: 'https://www.ronald.it.com/' },
+        {
+            name: 'twitter:title',
+            content: 'Ronald | IT Professional Portfolio',
+        },
+        {
+            name: 'twitter:description',
+            content:
+                'Explore the portfolio of Ronald, an IT professional specializing in innovative solutions, web development, and technology consulting. Discover projects, skills, and experience.',
+        },
+        {
+            name: 'twitter:image',
+            content: 'https://www.ronald.it.com/og-image.webp',
+        },
+    ];
+}
+
 export default function Portfolio() {
     const timelineRef = useRef<HTMLDivElement>(null);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);

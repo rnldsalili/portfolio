@@ -1,4 +1,4 @@
-name: Deploy to Testing
+name: Deploy to Production
 
 on:
     push:
@@ -11,8 +11,7 @@ env:
 jobs:
     deploy:
         runs-on: ubuntu-latest
-        environment: testing
-        name: Deploy to Testing Environment
+        name: Deploy to Production Environment
 
         steps:
             - name: Checkout code
@@ -79,8 +78,9 @@ jobs:
                   const configs = {
                     portfolio: {
                       path: 'apps/portfolio/wrangler.json',
-                      name: 'portfolio-portfolio-testing',
-                      route: 'testing.ronald.it.com'
+                      name: 'portfolio-portfolio-production',
+                      route: 'ronald.it.com',
+                      route2: 'www.ronald.it.com'
                     },
                   };
 
@@ -95,6 +95,11 @@ jobs:
                       const config: WranglerConfig = JSON.parse(readFileSync(path, 'utf-8'));
                       config.name = name;
                       config.routes.push({ pattern: route, custom_domain: true });
+
+                      if (route2) {
+                        config.routes.push({ pattern: route2, custom_domain: true });
+                      }
+
                       writeFileSync(path, JSON.stringify(config, null, 2));
                     }
                   }
@@ -150,7 +155,7 @@ jobs:
 
 
                   if [[ "${{ steps.changes.outputs.portfolio || steps.changes.outputs.shared }}" == "true" ]]; then
-                    echo "  - 🏠 portfolio: https://testing.ronald.it.com"
+                    echo "  - 🏠 portfolio: https://www.ronald.it.com"
                   fi
 
                   echo ""
