@@ -89,7 +89,7 @@ jobs:
                   };
 
                   // Configure simple apps (portfolio)
-                  for (const [key, { path, name, route }] of Object.entries(configs).slice(0, 2)) {
+                  for (const [key, { path, name, route, route2 }] of Object.entries(configs).slice(0, 2)) {
                     const appKey = key === 'portfolio' ? 'portfolio' : key;
                     if (hasChanges[appKey]) {
                       const config: WranglerConfig = JSON.parse(readFileSync(path, 'utf-8'));
