@@ -44,7 +44,10 @@ export function Layout({ children }: { children: React.ReactNode }) {
                     content="Explore the portfolio of Ronald, an IT professional specializing in innovative solutions, web development, and technology consulting. Discover projects, skills, and experience."
                     property="og:description"
                 />
-                <meta content="/og-image.webp" property="og:image" />
+                <meta
+                    content="https://www.ronald.it.com/og-image.webp"
+                    property="og:image"
+                />
 
                 {/* Twitter */}
                 <meta content="summary_large_image" name="twitter:card" />
@@ -57,7 +60,10 @@ export function Layout({ children }: { children: React.ReactNode }) {
                     content="Explore the portfolio of Ronald, an IT professional specializing in innovative solutions, web development, and technology consulting. Discover projects, skills, and experience."
                     name="twitter:description"
                 />
-                <meta content="/og-image.webp" name="twitter:image" />
+                <meta
+                    content="https://www.ronald.it.com/og-image.webp"
+                    name="twitter:image"
+                />
                 <Meta />
                 <Links />
             </head>
