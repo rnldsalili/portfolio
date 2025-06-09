@@ -3,8 +3,6 @@ name: Deploy to Testing
 on:
     push:
         branches: [main]
-        paths-ignore:
-            - '.github/workflows/deploy-testing.yml'
 
 env:
     NODE_VERSION: 22

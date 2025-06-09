@@ -32,6 +32,32 @@ export function Layout({ children }: { children: React.ReactNode }) {
                     content="width=device-width, initial-scale=1"
                     name="viewport"
                 />
+
+                {/* Open Graph / Facebook / LinkedIn */}
+                <meta content="website" property="og:type" />
+                <meta content="https://www.ronald.it.com/" property="og:url" />
+                <meta
+                    content="Ronald | IT Professional Portfolio"
+                    property="og:title"
+                />
+                <meta
+                    content="Explore the portfolio of Ronald, an IT professional specializing in innovative solutions, web development, and technology consulting. Discover projects, skills, and experience."
+                    property="og:description"
+                />
+                <meta content="/og-image.webp" property="og:image" />
+
+                {/* Twitter */}
+                <meta content="summary_large_image" name="twitter:card" />
+                <meta content="https://www.ronald.it.com/" name="twitter:url" />
+                <meta
+                    content="Ronald | IT Professional Portfolio"
+                    name="twitter:title"
+                />
+                <meta
+                    content="Explore the portfolio of Ronald, an IT professional specializing in innovative solutions, web development, and technology consulting. Discover projects, skills, and experience."
+                    name="twitter:description"
+                />
+                <meta content="/og-image.webp" name="twitter:image" />
                 <Meta />
                 <Links />
             </head>
