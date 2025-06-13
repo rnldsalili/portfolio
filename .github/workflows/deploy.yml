@@ -127,7 +127,7 @@ jobs:
                   done
 
             - name: Deploy frontend applications
-              if: steps.changes.outputs.portfolio == 'true'
+              if: steps.changes.outputs.portfolio == 'true' || steps.changes.outputs.shared == 'true'
               env:
                   CLOUDFLARE_ACCOUNT_ID: ${{ vars.CLOUDFLARE_ACCOUNT_ID }}
                   CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
@@ -147,7 +147,7 @@ jobs:
                   done
 
             - name: Deployment summary
-              if: steps.changes.outputs.portfolio == 'true'
+              if: steps.changes.outputs.portfolio == 'true' || steps.changes.outputs.shared == 'true'
               run: |
                   echo "✅ Deployment completed successfully!"
                   echo ""
