@@ -44,7 +44,7 @@ jobs:
             - name: Install dependencies
               run: pnpm install --frozen-lockfile
 
-            - name: Build and Run Portfolio
+            - name: Build Portfolio
               run: pnpm run build
 
             - name: Install Lighthouse CI
