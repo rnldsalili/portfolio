@@ -9,6 +9,11 @@ import {
 } from '@portfolio/ui/components/ui/card';
 import { Separator } from '@portfolio/ui/components/ui/separator';
 import {
+    Sheet,
+    SheetContent,
+    SheetTrigger,
+} from '@portfolio/ui/components/ui/sheet';
+import {
     Award,
     Building2,
     Calendar,
@@ -73,8 +78,8 @@ export function meta() {
 const EMAIL = 'ronaldsalili1@gmail.com';
 
 export default function Portfolio() {
+    const [open, setOpen] = useState(false);
     const timelineRef = useRef<HTMLDivElement>(null);
-    const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
     const skills = {
         'Programming Languages': ['TypeScript', 'JavaScript', 'Python', 'Java'],
@@ -300,91 +305,82 @@ export default function Portfolio() {
                             </div>
                         </div>
 
-                        {/* Mobile Menu Button */}
+                        {/* Mobile Menu Button using Sheet */}
                         <div className="md:hidden">
-                            <Button
-                                className="text-slate-600 hover:text-green-700 hover:bg-green-50"
-                                size="sm"
-                                variant="ghost"
-                                onClick={() =>
-                                    setIsMobileMenuOpen(!isMobileMenuOpen)
-                                }
-                            >
-                                <svg
-                                    className="w-6 h-6"
-                                    fill="none"
-                                    stroke="currentColor"
-                                    viewBox="0 0 24 24"
+                            <Sheet onOpenChange={setOpen} open={open}>
+                                <SheetTrigger asChild>
+                                    <Button
+                                        className="text-slate-600 hover:text-green-700 hover:bg-green-50"
+                                        size="sm"
+                                        variant="ghost"
+                                    >
+                                        <svg
+                                            className="w-6 h-6"
+                                            fill="none"
+                                            stroke="currentColor"
+                                            viewBox="0 0 24 24"
+                                        >
+                                            <path
+                                                d="M4 6h16M4 12h16M4 18h16"
+                                                strokeLinecap="round"
+                                                strokeLinejoin="round"
+                                                strokeWidth={2}
+                                            />
+                                        </svg>
+                                    </Button>
+                                </SheetTrigger>
+                                <SheetContent
+                                    className="p-0 w-64 max-w-full bg-white/60 backdrop-blur-lg border-r border-green-200"
+                                    side="right"
                                 >
-                                    {isMobileMenuOpen ? (
-                                        <path
-                                            d="M6 18L18 6M6 6l12 12"
-                                            strokeLinecap="round"
-                                            strokeLinejoin="round"
-                                            strokeWidth={2}
-                                        />
-                                    ) : (
-                                        <path
-                                            d="M4 6h16M4 12h16M4 18h16"
-                                            strokeLinecap="round"
-                                            strokeLinejoin="round"
-                                            strokeWidth={2}
-                                        />
-                                    )}
-                                </svg>
-                            </Button>
+                                    <div className="px-2 pt-10 pb-3 space-y-4">
+                                        <Link
+                                            className="block px-3 py-2 text-slate-600 hover:text-green-700 hover:bg-green-50 rounded-md transition-colors duration-300 font-medium"
+                                            onClick={() => setOpen(false)}
+                                            to="#about"
+                                        >
+                                            About
+                                        </Link>
+                                        <Link
+                                            className="block px-3 py-2 text-slate-600 hover:text-green-700 hover:bg-green-50 rounded-md transition-colors duration-300 font-medium"
+                                            onClick={() => setOpen(false)}
+                                            to="#experience"
+                                        >
+                                            Experience
+                                        </Link>
+                                        <Link
+                                            className="block px-3 py-2 text-slate-600 hover:text-green-700 hover:bg-green-50 rounded-md transition-colors duration-300 font-medium"
+                                            onClick={() => setOpen(false)}
+                                            to="#skills"
+                                        >
+                                            Skills
+                                        </Link>
+                                        <Link
+                                            className="block px-3 py-2 text-slate-600 hover:text-green-700 hover:bg-green-50 rounded-md transition-colors duration-300 font-medium"
+                                            onClick={() => setOpen(false)}
+                                            to="#education"
+                                        >
+                                            Education
+                                        </Link>
+                                        <div className="pt-2">
+                                            <Link to={`mailto:${EMAIL}`}>
+                                                <Button
+                                                    className="w-full bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white shadow-md"
+                                                    size="sm"
+                                                    onClick={() =>
+                                                        setOpen(false)
+                                                    }
+                                                >
+                                                    <Mail className="w-4 h-4 mr-2" />
+                                                    Get In Touch
+                                                </Button>
+                                            </Link>
+                                        </div>
+                                    </div>
+                                </SheetContent>
+                            </Sheet>
                         </div>
                     </div>
-
-                    {/* Mobile Navigation Menu */}
-                    {isMobileMenuOpen && (
-                        <div className="md:hidden border-t border-green-200 bg-white/95 backdrop-blur-lg">
-                            <div className="px-2 pt-2 pb-3 space-y-1">
-                                <Link
-                                    className="block px-3 py-2 text-slate-600 hover:text-green-700 hover:bg-green-50 rounded-md transition-colors duration-300 font-medium"
-                                    onClick={() => setIsMobileMenuOpen(false)}
-                                    to="#about"
-                                >
-                                    About
-                                </Link>
-                                <Link
-                                    className="block px-3 py-2 text-slate-600 hover:text-green-700 hover:bg-green-50 rounded-md transition-colors duration-300 font-medium"
-                                    onClick={() => setIsMobileMenuOpen(false)}
-                                    to="#experience"
-                                >
-                                    Experience
-                                </Link>
-                                <Link
-                                    className="block px-3 py-2 text-slate-600 hover:text-green-700 hover:bg-green-50 rounded-md transition-colors duration-300 font-medium"
-                                    onClick={() => setIsMobileMenuOpen(false)}
-                                    to="#skills"
-                                >
-                                    Skills
-                                </Link>
-                                <Link
-                                    className="block px-3 py-2 text-slate-600 hover:text-green-700 hover:bg-green-50 rounded-md transition-colors duration-300 font-medium"
-                                    onClick={() => setIsMobileMenuOpen(false)}
-                                    to="#education"
-                                >
-                                    Education
-                                </Link>
-                                <div className="pt-2">
-                                    <Link to={`mailto:${EMAIL}`}>
-                                        <Button
-                                            className="w-full bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white shadow-md"
-                                            size="sm"
-                                            onClick={() =>
-                                                setIsMobileMenuOpen(false)
-                                            }
-                                        >
-                                            <Mail className="w-4 h-4 mr-2" />
-                                            Get In Touch
-                                        </Button>
-                                    </Link>
-                                </div>
-                            </div>
-                        </div>
-                    )}
                 </div>
             </nav>
 
