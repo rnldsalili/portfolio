@@ -310,6 +310,7 @@ export default function Portfolio() {
                             <Sheet onOpenChange={setOpen} open={open}>
                                 <SheetTrigger asChild>
                                     <Button
+                                        aria-label="Open navigation menu"
                                         className="text-slate-600 hover:text-green-700 hover:bg-green-50"
                                         size="sm"
                                         variant="ghost"
@@ -335,28 +336,28 @@ export default function Portfolio() {
                                 >
                                     <div className="px-2 pt-10 pb-3 space-y-4">
                                         <Link
-                                            className="block px-3 py-2 text-slate-600 hover:text-green-700 hover:bg-green-50 rounded-md transition-colors duration-300 font-medium"
+                                            className="block px-3 py-2 text-slate-800 text-lg hover:text-green-700 hover:bg-green-50 rounded-md transition-colors duration-300 font-medium"
                                             onClick={() => setOpen(false)}
                                             to="#about"
                                         >
                                             About
                                         </Link>
                                         <Link
-                                            className="block px-3 py-2 text-slate-600 hover:text-green-700 hover:bg-green-50 rounded-md transition-colors duration-300 font-medium"
+                                            className="block px-3 py-2 text-slate-800 text-lg hover:text-green-700 hover:bg-green-50 rounded-md transition-colors duration-300 font-medium"
                                             onClick={() => setOpen(false)}
                                             to="#experience"
                                         >
                                             Experience
                                         </Link>
                                         <Link
-                                            className="block px-3 py-2 text-slate-600 hover:text-green-700 hover:bg-green-50 rounded-md transition-colors duration-300 font-medium"
+                                            className="block px-3 py-2 text-slate-800 text-lg hover:text-green-700 hover:bg-green-50 rounded-md transition-colors duration-300 font-medium"
                                             onClick={() => setOpen(false)}
                                             to="#skills"
                                         >
                                             Skills
                                         </Link>
                                         <Link
-                                            className="block px-3 py-2 text-slate-600 hover:text-green-700 hover:bg-green-50 rounded-md transition-colors duration-300 font-medium"
+                                            className="block px-3 py-2 text-slate-800 text-lg hover:text-green-700 hover:bg-green-50 rounded-md transition-colors duration-300 font-medium"
                                             onClick={() => setOpen(false)}
                                             to="#education"
                                         >
