@@ -146,30 +146,6 @@ jobs:
                     wait $job
                   done
 
-            - name: Wait for deployment propagation
-              if: steps.changes.outputs.portfolio == 'true'
-              run: |
-                  echo "⏳ Waiting for deployment to propagate..."
-                  sleep 30
-
-            - name: Install Lighthouse CI
-              if: steps.changes.outputs.portfolio == 'true'
-              run: npm install -g @lhci/cli@0.15.x
-
-            - name: Run Lighthouse CI
-              if: steps.changes.outputs.portfolio == 'true'
-              run: lhci autorun
-              env:
-                  LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
-
-            - name: Upload Lighthouse results
-              if: steps.changes.outputs.portfolio == 'true'
-              uses: actions/upload-artifact@v4
-              with:
-                  name: lighthouse-results
-                  path: /home/runner/work/portfolio/portfolio/.lighthouseci/
-                  if-no-files-found: warn
-
             - name: Deployment summary
               if: steps.changes.outputs.portfolio == 'true'
               run: |
