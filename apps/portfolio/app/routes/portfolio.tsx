@@ -386,7 +386,10 @@ export default function Portfolio() {
                         <div className="w-32 h-32 bg-gradient-to-br from-green-700 to-green-500 rounded-full mx-auto mb-6 flex items-center justify-center transition-transform duration-700 hover:scale-110 shadow-2xl">
                             <Code2 className="w-16 h-16 text-white" />
                         </div>
-                        <h1 className="text-5xl md:text-6xl font-bold text-slate-900 mb-4">
+                        <h1
+                            className="text-5xl md:text-6xl font-bold text-slate-900 mb-4"
+                            style={{ fontSize: '3rem' }}
+                        >
                             Ronald Salili
                         </h1>
                         <h2 className="text-2xl md:text-3xl text-green-700 font-semibold mb-6">
@@ -422,7 +425,7 @@ export default function Portfolio() {
             </section>
 
             {/* About Section */}
-            <SectionObserver className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-white via-green-50 to-emerald-50 bg-mesh">
+            <SectionObserver className="py-10 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-white via-green-50 to-emerald-50 bg-mesh">
                 <div className="max-w-6xl mx-auto" id="about">
                     <div className="text-center mb-16">
                         <h2 className="text-4xl font-bold text-slate-900 mb-4">
@@ -474,7 +477,7 @@ export default function Portfolio() {
             </SectionObserver>
 
             {/* Experience Section - Timeline */}
-            <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-slate-50 via-green-50 to-emerald-50">
+            <section className="py-10 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-slate-50 via-green-50 to-emerald-50">
                 <div className="max-w-6xl mx-auto" id="experience">
                     <div className="text-center mb-16">
                         <h2 className="text-4xl font-bold text-slate-900 mb-4">
@@ -537,7 +540,7 @@ export default function Portfolio() {
             </section>
 
             {/* Skills Section */}
-            <SectionObserver className="py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-white via-emerald-50 to-teal-50 bg-pattern">
+            <SectionObserver className="py-10 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-green-50 via-emerald-50 to-teal-50 bg-mesh">
                 <div className="max-w-6xl mx-auto" id="skills">
                     <div className="text-center mb-12">
                         <h2 className="text-4xl font-bold text-slate-900 mb-4">
@@ -545,37 +548,24 @@ export default function Portfolio() {
                         </h2>
                         <div className="w-24 h-1 bg-gradient-to-r from-green-600 to-emerald-600 mx-auto" />
                     </div>
-
-                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div className="flex flex-col gap-8 items-center">
                         {Object.entries(skills).map(
-                            ([category, skillList], index) => (
-                                <Card
-                                    className="p-4 hover:shadow-lg transition-all duration-300 stagger-item bg-gradient-to-br from-white to-green-50 border-green-100 hover:-translate-y-1"
-                                    key={index}
-                                >
-                                    <CardHeader className="pb-3">
-                                        <CardTitle className="text-lg text-slate-900 flex items-center gap-2">
-                                            <div className="w-1 h-6 bg-gradient-to-b from-green-600 to-emerald-600 rounded-full" />
-                                            {category}
-                                        </CardTitle>
-                                    </CardHeader>
-                                    <CardContent className="pt-0">
-                                        <div className="grid items-center grid-cols-1 sm:grid-cols-2 gap-2">
-                                            {skillList.map(
-                                                (skill, skillIndex) => (
-                                                    <div
-                                                        className="p-2 bg-slate-50 rounded-md hover:bg-green-50 transition-colors duration-200"
-                                                        key={skillIndex}
-                                                    >
-                                                        <span className="text-sm font-medium text-slate-700">
-                                                            {skill}
-                                                        </span>
-                                                    </div>
-                                                ),
-                                            )}
-                                        </div>
-                                    </CardContent>
-                                </Card>
+                            ([category, skillList], idx) => (
+                                <div className="w-full max-w-2xl" key={idx}>
+                                    <h3 className="text-lg font-semibold text-green-700 mb-2">
+                                        {category}
+                                    </h3>
+                                    <div className="flex flex-wrap gap-2">
+                                        {skillList.map((skill, skillIdx) => (
+                                            <Badge
+                                                className="bg-green-100 text-green-800 border border-green-200 px-3 py-1 rounded-full text-sm font-medium"
+                                                key={skillIdx}
+                                            >
+                                                {skill}
+                                            </Badge>
+                                        ))}
+                                    </div>
+                                </div>
                             ),
                         )}
                     </div>
@@ -583,7 +573,7 @@ export default function Portfolio() {
             </SectionObserver>
 
             {/* Education & Certificates */}
-            <SectionObserver className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-green-50 via-emerald-50 to-teal-50 bg-mesh">
+            <SectionObserver className="py-10 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-slate-50 via-green-50 to-emerald-50">
                 <div className="max-w-6xl mx-auto" id="education">
                     <div className="text-center mb-16">
                         <h2 className="text-4xl font-bold text-slate-900 mb-4">
@@ -672,9 +662,7 @@ export default function Portfolio() {
                             </p>
                             <p className="text-green-300 text-sm leading-relaxed">
                                 Specializing in JavaScript, TypeScript, and
-                                modern web technologies. Passionate about
-                                creating scalable solutions and leading
-                                development teams.
+                                modern web technologies.
                             </p>
                         </div>
 
