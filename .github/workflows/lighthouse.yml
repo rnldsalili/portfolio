@@ -1,9 +1,9 @@
 name: Lighthouse CI
 
 on:
-  push:
-      branches: [main]
-  workflow_dispatch:
+    push:
+        branches: [main]
+    workflow_dispatch:
 
 env:
     NODE_VERSION: 22
@@ -46,63 +46,3 @@ jobs:
             - name: Run Lighthouse CI
               run: lhci autorun --upload.target=temporary-public-storage
               continue-on-error: true
-
-            - name: Format lighthouse score
-              id: format_lighthouse_score
-              uses: actions/github-script@v7
-              with:
-              script: |
-                  const fs = require('fs');
-                  const path = require('path');
-                  try {
-                  const resultsDir = '.lighthouseci';
-                  const files = fs
-                      .readdirSync(resultsDir)
-                      .filter(f => f.startsWith('lhr-') && f.endsWith('.json'));
-                  if (files.length === 0) {
-                      core.setOutput('comment', '❌ No Lighthouse results found');
-                      return;
-                  }
-                  const results = JSON.parse(
-                      fs.readFileSync(path.join(resultsDir, files[0]))
-                  );
-                  const { categories, audits } = results;
-                  const formatScore = score => {
-                      const percentage = Math.round(score * 100);
-                      const emoji =
-                      percentage >= 90
-                          ? '🟢'
-                          : percentage >= 50
-                          ? '🟡'
-                          : '🔴';
-                      return `${emoji} ${percentage}`;
-                  };
-                  const comment = `## 🚢 Lighthouse Results
-
-| Category      | Score |
-|---------------|-------|
-| Performance   | ${formatScore(categories.performance.score)} |
-| Accessibility | ${formatScore(categories.accessibility.score)} |
-| Best Practices| ${formatScore(categories['best-practices'].score)} |
-| SEO           | ${formatScore(categories.seo.score)} |
-
-**Key Metrics:**
-- First Contentful Paint: ${Math.round(
-                audits['first-contentful-paint'].numericValue
-              )}ms
-- Largest Contentful Paint: ${Math.round(
-                audits['largest-contentful-paint'].numericValue
-              )}ms
-- Cumulative Layout Shift: ${audits[
-                'cumulative-layout-shift'
-              ].numericValue.toFixed(3)}
-
-_Tested URL: ${results.finalUrl}_`;
-              core.setOutput('comment', comment);
-            } catch (error) {
-              console.error('Error processing Lighthouse results:', error);
-              core.setOutput(
-                'comment',
-                '❌ Error processing Lighthouse results'
-              );
-            }
