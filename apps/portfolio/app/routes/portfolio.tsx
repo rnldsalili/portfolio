@@ -728,7 +728,7 @@ export default function Portfolio() {
 
                     <div className="flex flex-col md:flex-row justify-between items-center text-sm">
                         <p className="text-green-200">
-                            © 2024 Ronald Salili. All rights reserved.
+                            © {new Date().getFullYear()} Ronald Salili. All rights reserved.
                         </p>
                     </div>
                 </div>
