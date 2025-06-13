@@ -19,12 +19,12 @@ jobs:
             - name: Setup Node.js
               uses: actions/setup-node@v4
               with:
-              node-version: ${{ env.NODE_VERSION }}
+                  node-version: ${{ env.NODE_VERSION }}
 
             - name: Setup PNPM
               uses: pnpm/action-setup@v4
               with:
-              version: ${{ env.PNPM_VERSION }}
+                  version: ${{ env.PNPM_VERSION }}
 
             - name: Get PNPM store directory
               shell: bash
@@ -33,10 +33,10 @@ jobs:
             - name: Cache PNPM store
               uses: actions/cache@v4
               with:
-              path: ${{ env.STORE_PATH }}
-              key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
-              restore-keys: |
-                  ${{ runner.os }}-pnpm-store-
+                  path: ${{ env.STORE_PATH }}
+                  key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+                  restore-keys: |
+                      ${{ runner.os }}-pnpm-store-
 
             - name: Install Lighthouse CI
               run: pnpm install -g @lhci/cli@0.15.x
