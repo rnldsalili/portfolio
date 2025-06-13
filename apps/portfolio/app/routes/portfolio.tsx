@@ -28,10 +28,15 @@ import {
     Phone,
     User,
 } from 'lucide-react';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, lazy, Suspense } from 'react';
 import { Link } from 'react-router';
 
-import { SectionObserver } from '@/portfolio/components/section-observer';
+// Lazy load SectionObserver to defer its JS until needed
+const SectionObserver = lazy(() =>
+    import('@/portfolio/components/section-observer').then((mod) => ({
+        default: mod.SectionObserver,
+    })),
+);
 
 export function meta() {
     return [
@@ -431,62 +436,65 @@ export default function Portfolio() {
             </section>
 
             {/* About Section */}
-            <SectionObserver className="py-10 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-white via-green-50 to-emerald-50 bg-mesh">
-                <div className="max-w-6xl mx-auto" id="about">
-                    <div className="text-center mb-16">
-                        <h2 className="text-4xl font-bold text-slate-900 mb-4">
-                            About Me
-                        </h2>
-                        <div className="w-24 h-1 bg-gradient-to-r from-green-600 to-emerald-600 mx-auto" />
+            <Suspense fallback={<div />}>
+                <SectionObserver className="py-10 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-white via-green-50 to-emerald-50 bg-mesh">
+                    <div className="max-w-6xl mx-auto" id="about">
+                        <div className="text-center mb-16">
+                            <h2 className="text-4xl font-bold text-slate-900 mb-4">
+                                About Me
+                            </h2>
+                            <div className="w-24 h-1 bg-gradient-to-r from-green-600 to-emerald-600 mx-auto" />
+                        </div>
+                        <div className="grid md:grid-cols-3 gap-8">
+                            <Card className="text-center p-6 hover:shadow-xl transition-all duration-300 hover:-translate-y-2 stagger-item bg-gradient-to-br from-white to-green-50 border-green-100">
+                                <CardHeader>
+                                    <Globe className="w-12 h-12 text-green-700 mx-auto mb-4" />
+                                    <CardTitle className="text-xl">
+                                        Full-Stack Development
+                                    </CardTitle>
+                                </CardHeader>
+                                <CardContent>
+                                    <p className="text-slate-600">
+                                        Experienced in architecting solutions
+                                        and implementing microservices with
+                                        modern frameworks.
+                                    </p>
+                                </CardContent>
+                            </Card>
+                            <Card className="text-center p-6 hover:shadow-xl transition-all duration-300 hover:-translate-y-2 stagger-item bg-gradient-to-br from-white to-emerald-50 border-emerald-100">
+                                <CardHeader>
+                                    <Database className="w-12 h-12 text-green-700 mx-auto mb-4" />
+                                    <CardTitle className="text-xl">
+                                        Database Design
+                                    </CardTitle>
+                                </CardHeader>
+                                <CardContent>
+                                    <p className="text-slate-600">
+                                        Skilled in designing databases and
+                                        managing end-to-end development
+                                        processes.
+                                    </p>
+                                </CardContent>
+                            </Card>
+                            <Card className="text-center p-6 hover:shadow-xl transition-all duration-300 hover:-translate-y-2 stagger-item bg-gradient-to-br from-white to-teal-50 border-teal-100">
+                                <CardHeader>
+                                    <User className="w-12 h-12 text-green-700 mx-auto mb-4" />
+                                    <CardTitle className="text-xl">
+                                        Team Leadership
+                                    </CardTitle>
+                                </CardHeader>
+                                <CardContent>
+                                    <p className="text-slate-600">
+                                        Proven ability to lead teams and
+                                        integrate APIs while ensuring
+                                        high-quality deliverables.
+                                    </p>
+                                </CardContent>
+                            </Card>
+                        </div>
                     </div>
-                    <div className="grid md:grid-cols-3 gap-8">
-                        <Card className="text-center p-6 hover:shadow-xl transition-all duration-300 hover:-translate-y-2 stagger-item bg-gradient-to-br from-white to-green-50 border-green-100">
-                            <CardHeader>
-                                <Globe className="w-12 h-12 text-green-700 mx-auto mb-4" />
-                                <CardTitle className="text-xl">
-                                    Full-Stack Development
-                                </CardTitle>
-                            </CardHeader>
-                            <CardContent>
-                                <p className="text-slate-600">
-                                    Experienced in architecting solutions and
-                                    implementing microservices with modern
-                                    frameworks.
-                                </p>
-                            </CardContent>
-                        </Card>
-                        <Card className="text-center p-6 hover:shadow-xl transition-all duration-300 hover:-translate-y-2 stagger-item bg-gradient-to-br from-white to-emerald-50 border-emerald-100">
-                            <CardHeader>
-                                <Database className="w-12 h-12 text-green-700 mx-auto mb-4" />
-                                <CardTitle className="text-xl">
-                                    Database Design
-                                </CardTitle>
-                            </CardHeader>
-                            <CardContent>
-                                <p className="text-slate-600">
-                                    Skilled in designing databases and managing
-                                    end-to-end development processes.
-                                </p>
-                            </CardContent>
-                        </Card>
-                        <Card className="text-center p-6 hover:shadow-xl transition-all duration-300 hover:-translate-y-2 stagger-item bg-gradient-to-br from-white to-teal-50 border-teal-100">
-                            <CardHeader>
-                                <User className="w-12 h-12 text-green-700 mx-auto mb-4" />
-                                <CardTitle className="text-xl">
-                                    Team Leadership
-                                </CardTitle>
-                            </CardHeader>
-                            <CardContent>
-                                <p className="text-slate-600">
-                                    Proven ability to lead teams and integrate
-                                    APIs while ensuring high-quality
-                                    deliverables.
-                                </p>
-                            </CardContent>
-                        </Card>
-                    </div>
-                </div>
-            </SectionObserver>
+                </SectionObserver>
+            </Suspense>
 
             {/* Experience Section - Timeline */}
             <section className="py-10 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-slate-50 via-green-50 to-emerald-50">
@@ -552,114 +560,120 @@ export default function Portfolio() {
             </section>
 
             {/* Skills Section */}
-            <SectionObserver className="py-10 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-green-50 via-emerald-50 to-teal-50 bg-mesh">
-                <div className="max-w-6xl mx-auto" id="skills">
-                    <div className="text-center mb-12">
-                        <h2 className="text-4xl font-bold text-slate-900 mb-4">
-                            Skills & Technologies
-                        </h2>
-                        <div className="w-24 h-1 bg-gradient-to-r from-green-600 to-emerald-600 mx-auto" />
-                    </div>
-                    <div className="flex flex-col gap-8 items-center">
-                        {Object.entries(skills).map(
-                            ([category, skillList], idx) => (
-                                <div className="w-full max-w-2xl" key={idx}>
-                                    <h3 className="text-lg font-semibold text-green-700 mb-2">
-                                        {category}
-                                    </h3>
-                                    <div className="flex flex-wrap gap-2">
-                                        {skillList.map((skill, skillIdx) => (
-                                            <Badge
-                                                className="bg-green-100 text-green-800 border border-green-200 px-3 py-1 rounded-full text-sm font-medium"
-                                                key={skillIdx}
-                                            >
-                                                {skill}
-                                            </Badge>
-                                        ))}
+            <Suspense fallback={<div />}>
+                <SectionObserver className="py-10 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-green-50 via-emerald-50 to-teal-50 bg-mesh">
+                    <div className="max-w-6xl mx-auto" id="skills">
+                        <div className="text-center mb-12">
+                            <h2 className="text-4xl font-bold text-slate-900 mb-4">
+                                Skills & Technologies
+                            </h2>
+                            <div className="w-24 h-1 bg-gradient-to-r from-green-600 to-emerald-600 mx-auto" />
+                        </div>
+                        <div className="flex flex-col gap-8 items-center">
+                            {Object.entries(skills).map(
+                                ([category, skillList], idx) => (
+                                    <div className="w-full max-w-2xl" key={idx}>
+                                        <h3 className="text-lg font-semibold text-green-700 mb-2">
+                                            {category}
+                                        </h3>
+                                        <div className="flex flex-wrap gap-2">
+                                            {skillList.map(
+                                                (skill, skillIdx) => (
+                                                    <Badge
+                                                        className="bg-green-100 text-green-800 border border-green-200 px-3 py-1 rounded-full text-sm font-medium"
+                                                        key={skillIdx}
+                                                    >
+                                                        {skill}
+                                                    </Badge>
+                                                ),
+                                            )}
+                                        </div>
                                     </div>
-                                </div>
-                            ),
-                        )}
+                                ),
+                            )}
+                        </div>
                     </div>
-                </div>
-            </SectionObserver>
+                </SectionObserver>
+            </Suspense>
 
             {/* Education & Certificates */}
-            <SectionObserver className="py-10 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-slate-50 via-green-50 to-emerald-50">
-                <div className="max-w-6xl mx-auto" id="education">
-                    <div className="text-center mb-16">
-                        <h2 className="text-4xl font-bold text-slate-900 mb-4">
-                            Education & Certificates
-                        </h2>
-                        <div className="w-24 h-1 bg-gradient-to-r from-green-600 to-emerald-600 mx-auto" />
-                    </div>
-                    <div className="grid md:grid-cols-2 gap-8">
-                        <div>
-                            <h3 className="text-2xl font-semibold text-slate-900 mb-6 flex items-center">
-                                <GraduationCap className="w-6 h-6 mr-2 text-green-700" />
-                                Education
-                            </h3>
-                            <div className="space-y-6">
-                                {education.map((edu, index) => (
-                                    <Card
-                                        className="p-6 hover:shadow-xl transition-all duration-300 hover:-translate-y-1 stagger-item bg-gradient-to-br from-white to-green-50 border-green-100"
-                                        key={index}
-                                    >
-                                        <CardHeader className="pb-2">
-                                            <CardTitle className="text-lg text-slate-900">
-                                                {edu.degree}
-                                            </CardTitle>
-                                            <CardDescription className="text-green-700 font-semibold">
-                                                {edu.school}
-                                            </CardDescription>
-                                        </CardHeader>
-                                        <CardContent>
-                                            <div className="flex items-center text-slate-600 mb-1">
-                                                <MapPin className="w-4 h-4 mr-2" />
-                                                {edu.location}
-                                            </div>
-                                            <div className="flex items-center text-slate-600">
-                                                <Calendar className="w-4 h-4 mr-2" />
-                                                {edu.period}
-                                            </div>
-                                        </CardContent>
-                                    </Card>
-                                ))}
+            <Suspense fallback={<div />}>
+                <SectionObserver className="py-10 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-slate-50 via-green-50 to-emerald-50">
+                    <div className="max-w-6xl mx-auto" id="education">
+                        <div className="text-center mb-16">
+                            <h2 className="text-4xl font-bold text-slate-900 mb-4">
+                                Education & Certificates
+                            </h2>
+                            <div className="w-24 h-1 bg-gradient-to-r from-green-600 to-emerald-600 mx-auto" />
+                        </div>
+                        <div className="grid md:grid-cols-2 gap-8">
+                            <div>
+                                <h3 className="text-2xl font-semibold text-slate-900 mb-6 flex items-center">
+                                    <GraduationCap className="w-6 h-6 mr-2 text-green-700" />
+                                    Education
+                                </h3>
+                                <div className="space-y-6">
+                                    {education.map((edu, index) => (
+                                        <Card
+                                            className="p-6 hover:shadow-xl transition-all duration-300 hover:-translate-y-1 stagger-item bg-gradient-to-br from-white to-green-50 border-green-100"
+                                            key={index}
+                                        >
+                                            <CardHeader className="pb-2">
+                                                <CardTitle className="text-lg text-slate-900">
+                                                    {edu.degree}
+                                                </CardTitle>
+                                                <CardDescription className="text-green-700 font-semibold">
+                                                    {edu.school}
+                                                </CardDescription>
+                                            </CardHeader>
+                                            <CardContent>
+                                                <div className="flex items-center text-slate-600 mb-1">
+                                                    <MapPin className="w-4 h-4 mr-2" />
+                                                    {edu.location}
+                                                </div>
+                                                <div className="flex items-center text-slate-600">
+                                                    <Calendar className="w-4 h-4 mr-2" />
+                                                    {edu.period}
+                                                </div>
+                                            </CardContent>
+                                        </Card>
+                                    ))}
+                                </div>
+                            </div>
+                            <div>
+                                <h3 className="text-2xl font-semibold text-slate-900 mb-6 flex items-center">
+                                    <Award className="w-6 h-6 mr-2 text-green-700" />
+                                    Certificates
+                                </h3>
+                                <Card className="p-6 hover:shadow-xl transition-all duration-300 bg-gradient-to-br from-white to-emerald-50 border-emerald-100">
+                                    <CardContent className="pt-0">
+                                        <div className="flex flex-col gap-4">
+                                            {certificates.map((cert, index) => (
+                                                <Link
+                                                    className="font-semibold text-slate-900 hover:text-green-700 transition-colors"
+                                                    key={index}
+                                                    target="_blank"
+                                                    to={cert.link}
+                                                >
+                                                    <div className="flex items-center p-4 bg-gradient-to-r from-green-50 to-emerald-50 rounded-lg transition-all duration-300 hover:from-green-100 hover:to-emerald-100 stagger-item border border-green-100">
+                                                        <Award className="w-5 h-5 text-green-700 mr-3" />
+                                                        <div>
+                                                            {cert.label}
+                                                            <p className="text-sm text-slate-600">
+                                                                Coursera
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </Link>
+                                            ))}
+                                        </div>
+                                    </CardContent>
+                                </Card>
                             </div>
                         </div>
-                        <div>
-                            <h3 className="text-2xl font-semibold text-slate-900 mb-6 flex items-center">
-                                <Award className="w-6 h-6 mr-2 text-green-700" />
-                                Certificates
-                            </h3>
-                            <Card className="p-6 hover:shadow-xl transition-all duration-300 bg-gradient-to-br from-white to-emerald-50 border-emerald-100">
-                                <CardContent className="pt-0">
-                                    <div className="flex flex-col gap-4">
-                                        {certificates.map((cert, index) => (
-                                            <Link
-                                                className="font-semibold text-slate-900 hover:text-green-700 transition-colors"
-                                                key={index}
-                                                target="_blank"
-                                                to={cert.link}
-                                            >
-                                                <div className="flex items-center p-4 bg-gradient-to-r from-green-50 to-emerald-50 rounded-lg transition-all duration-300 hover:from-green-100 hover:to-emerald-100 stagger-item border border-green-100">
-                                                    <Award className="w-5 h-5 text-green-700 mr-3" />
-                                                    <div>
-                                                        {cert.label}
-                                                        <p className="text-sm text-slate-600">
-                                                            Coursera
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                            </Link>
-                                        ))}
-                                    </div>
-                                </CardContent>
-                            </Card>
-                        </div>
                     </div>
-                </div>
-            </SectionObserver>
+                </SectionObserver>
+            </Suspense>
 
             {/* Footer */}
             <footer className="bg-gradient-to-r from-green-900 via-emerald-900 to-teal-900 text-white py-8 px-4 sm:px-6 lg:px-8">
