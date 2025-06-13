@@ -42,7 +42,6 @@ jobs:
                       ${{ runner.os }}-pnpm-store-
 
             - name: Install dependencies
-              if: steps.changes.outputs.portfolio == 'true' || steps.changes.outputs.shared == 'true'
               run: pnpm install --frozen-lockfile
 
             - name: Build and Run Portfolio
