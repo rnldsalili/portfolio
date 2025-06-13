@@ -163,9 +163,18 @@ export default function Portfolio() {
     ];
 
     const certificates = [
-        'Python for Everybody Specialization',
-        'Web Application Technologies and Django',
-        'Introduction to HTML5',
+        {
+            label: 'Python for Everybody Specialization',
+            link: 'https://coursera.org/share/3952c1ae71e5f3425d0451ce085a9b85',
+        },
+        {
+            label: 'Web Application Technologies and Django',
+            link: 'https://coursera.org/share/304ed4f6228907fc6b51d19015383aff',
+        },
+        {
+            label: 'Introduction to HTML5',
+            link: 'https://coursera.org/share/4f61128add4cea79670f067406b12e33',
+        },
     ];
 
     // Timeline animation observer
@@ -437,7 +446,9 @@ export default function Portfolio() {
                         <Card className="text-center p-6 hover:shadow-xl transition-all duration-300 hover:-translate-y-2 stagger-item bg-gradient-to-br from-white to-green-50 border-green-100">
                             <CardHeader>
                                 <Globe className="w-12 h-12 text-green-700 mx-auto mb-4" />
-                                <CardTitle>Full-Stack Development</CardTitle>
+                                <CardTitle className="text-xl">
+                                    Full-Stack Development
+                                </CardTitle>
                             </CardHeader>
                             <CardContent>
                                 <p className="text-slate-600">
@@ -450,7 +461,9 @@ export default function Portfolio() {
                         <Card className="text-center p-6 hover:shadow-xl transition-all duration-300 hover:-translate-y-2 stagger-item bg-gradient-to-br from-white to-emerald-50 border-emerald-100">
                             <CardHeader>
                                 <Database className="w-12 h-12 text-green-700 mx-auto mb-4" />
-                                <CardTitle>Database Design</CardTitle>
+                                <CardTitle className="text-xl">
+                                    Database Design
+                                </CardTitle>
                             </CardHeader>
                             <CardContent>
                                 <p className="text-slate-600">
@@ -462,7 +475,9 @@ export default function Portfolio() {
                         <Card className="text-center p-6 hover:shadow-xl transition-all duration-300 hover:-translate-y-2 stagger-item bg-gradient-to-br from-white to-teal-50 border-teal-100">
                             <CardHeader>
                                 <User className="w-12 h-12 text-green-700 mx-auto mb-4" />
-                                <CardTitle>Team Leadership</CardTitle>
+                                <CardTitle className="text-xl">
+                                    Team Leadership
+                                </CardTitle>
                             </CardHeader>
                             <CardContent>
                                 <p className="text-slate-600">
@@ -622,22 +637,24 @@ export default function Portfolio() {
                             </h3>
                             <Card className="p-6 hover:shadow-xl transition-all duration-300 bg-gradient-to-br from-white to-emerald-50 border-emerald-100">
                                 <CardContent className="pt-0">
-                                    <div className="space-y-4">
+                                    <div className="flex flex-col gap-4">
                                         {certificates.map((cert, index) => (
-                                            <div
-                                                className="flex items-center p-4 bg-gradient-to-r from-green-50 to-emerald-50 rounded-lg transition-all duration-300 hover:from-green-100 hover:to-emerald-100 stagger-item border border-green-100"
+                                            <Link
+                                                className="font-semibold text-slate-900 hover:text-green-700 transition-colors"
                                                 key={index}
+                                                target="_blank"
+                                                to={cert.link}
                                             >
-                                                <Award className="w-5 h-5 text-green-700 mr-3" />
-                                                <div>
-                                                    <p className="font-semibold text-slate-900">
-                                                        {cert}
-                                                    </p>
-                                                    <p className="text-sm text-slate-600">
-                                                        Coursera
-                                                    </p>
+                                                <div className="flex items-center p-4 bg-gradient-to-r from-green-50 to-emerald-50 rounded-lg transition-all duration-300 hover:from-green-100 hover:to-emerald-100 stagger-item border border-green-100">
+                                                    <Award className="w-5 h-5 text-green-700 mr-3" />
+                                                    <div>
+                                                        {cert.label}
+                                                        <p className="text-sm text-slate-600">
+                                                            Coursera
+                                                        </p>
+                                                    </div>
                                                 </div>
-                                            </div>
+                                            </Link>
                                         ))}
                                     </div>
                                 </CardContent>
