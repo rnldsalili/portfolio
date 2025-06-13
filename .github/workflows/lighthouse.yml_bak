@@ -41,12 +41,6 @@ jobs:
                   restore-keys: |
                       ${{ runner.os }}-pnpm-store-
 
-            - name: Install dependencies
-              run: pnpm install --frozen-lockfile
-
-            - name: Build Portfolio
-              run: pnpm run build
-
             - name: Install Lighthouse CI
               run: pnpm install -g @lhci/cli@0.15.x
 

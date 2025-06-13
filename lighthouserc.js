@@ -1,17 +1,12 @@
 module.exports = {
   ci: {
     collect: {
-      url: [
-        'http://localhost:3000',
-      ],
-      startServerCommand: 'pnpm run preview',
-      startServerReadyPattern: 'Local:',
-      startServerReadyTimeout: 30000,
+      url: ['https://www.ronald.it.com'],
       numberOfRuns: 3,
       settings: {
         // Handle client-side routing
         chromeFlags: '--no-sandbox --disable-setuid-sandbox',
-        
+
         // Wait for React to hydrate
         skipAudits: ['uses-http2'],
       },
