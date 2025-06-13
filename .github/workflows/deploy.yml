@@ -146,6 +146,28 @@ jobs:
                     wait $job
                   done
 
+            - name: Install Lighthouse CI
+              if: steps.changes.outputs.portfolio == 'true' || steps.changes.outputs.shared == 'true'
+              run: pnpm install -g @lhci/cli@0.15.x
+
+            - name: Run Lighthouse CI
+              if: steps.changes.outputs.portfolio == 'true' || steps.changes.outputs.shared == 'true'
+              run: lhci autorun --upload.target=temporary-public-storage
+              continue-on-error: true
+              env:
+                  LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
+
+            - name: Upload Lighthouse results
+              if: steps.changes.outputs.portfolio == 'true' || steps.changes.outputs.shared == 'true'
+              uses: actions/upload-artifact@v4
+              if: always()
+              with:
+                  name: lighthouse-results
+                  path: |
+                      .lighthouseci/
+                      **/.lighthouseci/
+                  if-no-files-found: warn
+
             - name: Deployment summary
               if: steps.changes.outputs.portfolio == 'true' || steps.changes.outputs.shared == 'true'
               run: |
