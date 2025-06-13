@@ -1,10 +1,7 @@
 name: Lighthouse CI
 
 on:
-    push:
-        branches: [main]
-    pull_request:
-        branches: [main]
+    workflow_dispatch:
 
 env:
     NODE_VERSION: 22
@@ -54,5 +51,5 @@ jobs:
               if: always()
               with:
                   name: lighthouse-results
-                  path: .lighthouseci/
+                  path: /home/runner/work/portfolio/portfolio/.lighthouseci/
                   if-no-files-found: warn
