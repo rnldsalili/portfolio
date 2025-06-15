@@ -9,7 +9,7 @@
     "dev": "react-router dev",
     "preview": "vite preview",
     "typecheck": "npm run cf-typegen && react-router typegen && tsc -b",
-    "generate:sitemap": "pnpm dlx sitemap-generator-cli www.ronald.it.com --filepath ./public/sitemap.xml"
+    "generate:sitemap": "pnpm dlx sitemap-generator-cli https://www.ronald.it.com --filepath ./public/sitemap.xml"
   },
   "dependencies": {
     "@portfolio/ui": "workspace:*",
