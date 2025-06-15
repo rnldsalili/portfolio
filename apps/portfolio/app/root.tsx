@@ -46,6 +46,10 @@ export function Layout({ children }: { children: React.ReactNode }) {
                     content="width=device-width, initial-scale=1"
                     name="viewport"
                 />
+                <meta
+                    content="C78FDBB865D073BE5BBFA56CFE6A66D9"
+                    name="msvalidate.01"
+                />
 
                 {/* Open Graph / Facebook / LinkedIn */}
                 <meta content="website" property="og:type" />
