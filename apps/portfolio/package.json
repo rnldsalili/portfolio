@@ -8,7 +8,8 @@
     "deploy": "wrangler deploy",
     "dev": "react-router dev",
     "preview": "vite preview",
-    "typecheck": "npm run cf-typegen && react-router typegen && tsc -b"
+    "typecheck": "npm run cf-typegen && react-router typegen && tsc -b",
+    "generate:sitemap": "pnpm dlx sitemap-generator-cli www.ronald.it.com --filepath ./public/sitemap.xml"
   },
   "dependencies": {
     "@portfolio/ui": "workspace:*",

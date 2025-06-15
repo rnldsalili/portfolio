@@ -110,6 +110,11 @@ jobs:
               env:
                   portfolio_CHANGED: ${{ steps.changes.outputs.portfolio }}
 
+            - name: Generate sitemap
+              if: steps.changes.outputs.portfolio == 'true' ||  steps.changes.outputs.shared == 'true'
+              working-directory: apps/portfolio
+              run: pnpm run generate:sitemap
+
             - name: Build applications
               if: steps.changes.outputs.portfolio == 'true' ||  steps.changes.outputs.shared == 'true'
               run: |
