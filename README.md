@@ -35,17 +35,13 @@ Welcome to the portfolio of **Ronald Salili**, a Full-Stack Software Engineer sp
 2. **Install dependencies:**
 
     ```bash
-    npm install
-    # or
-    yarn install
+    pnpm install
     ```
 
 3. **Run the development server:**
 
     ```bash
-    npm run dev
-    # or
-    yarn dev
+    pnpm run dev
     ```
 
 4. **Open in your browser:**
