@@ -44,7 +44,7 @@ export function meta() {
 
         // Open Graph / Facebook / LinkedIn
         { property: 'og:type', content: 'website' },
-        { property: 'og:url', content: 'https://www.ronald.it.com/' },
+        { property: 'og:url', content: 'https://ronald.it.com/' },
         { property: 'og:title', content: 'Ronald | IT Professional Portfolio' },
         {
             property: 'og:description',
@@ -53,12 +53,12 @@ export function meta() {
         },
         {
             property: 'og:image',
-            content: 'https://www.ronald.it.com/og-image.webp',
+            content: 'https://ronald.it.com/og-image.webp',
         },
 
         // Twitter
         { name: 'twitter:card', content: 'summary_large_image' },
-        { name: 'twitter:url', content: 'https://www.ronald.it.com/' },
+        { name: 'twitter:url', content: 'https://ronald.it.com/' },
         {
             name: 'twitter:title',
             content: 'Ronald | IT Professional Portfolio',
@@ -70,7 +70,7 @@ export function meta() {
         },
         {
             name: 'twitter:image',
-            content: 'https://www.ronald.it.com/og-image.webp',
+            content: 'https://ronald.it.com/og-image.webp',
         },
     ];
 }

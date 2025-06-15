@@ -1,7 +1,7 @@
 module.exports = {
   ci: {
     collect: {
-      url: ['https://www.ronald.it.com'],
+      url: ['https://ronald.it.com'],
       numberOfRuns: 3,
       settings: {
         // Handle client-side routing

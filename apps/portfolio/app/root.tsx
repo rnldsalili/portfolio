@@ -53,7 +53,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
 
                 {/* Open Graph / Facebook / LinkedIn */}
                 <meta content="website" property="og:type" />
-                <meta content="https://www.ronald.it.com/" property="og:url" />
+                <meta content="https://ronald.it.com/" property="og:url" />
                 <meta
                     content="Ronald | IT Professional Portfolio"
                     property="og:title"
@@ -63,13 +63,13 @@ export function Layout({ children }: { children: React.ReactNode }) {
                     property="og:description"
                 />
                 <meta
-                    content="https://www.ronald.it.com/og-image.webp"
+                    content="https://ronald.it.com/og-image.webp"
                     property="og:image"
                 />
 
                 {/* Twitter */}
                 <meta content="summary_large_image" name="twitter:card" />
-                <meta content="https://www.ronald.it.com/" name="twitter:url" />
+                <meta content="https://ronald.it.com/" name="twitter:url" />
                 <meta
                     content="Ronald | IT Professional Portfolio"
                     name="twitter:title"
@@ -79,7 +79,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
                     name="twitter:description"
                 />
                 <meta
-                    content="https://www.ronald.it.com/og-image.webp"
+                    content="https://ronald.it.com/og-image.webp"
                     name="twitter:image"
                 />
                 <Meta />
