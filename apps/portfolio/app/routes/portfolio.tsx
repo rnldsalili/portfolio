@@ -422,6 +422,12 @@ export default function Portfolio() {
                             className="transition-all duration-300 transform hover:scale-105 hover:border-green-700 hover:text-green-700 shadow-lg"
                             size="lg"
                             variant="outline"
+                            onClick={() => {
+                                window.open(
+                                    'https://assets.ronald.it.com/salili_ronald_resume.pdf',
+                                    '_blank',
+                                );
+                            }}
                         >
                             <Download className="w-5 h-5 mr-2" />
                             Download Resume
@@ -728,7 +734,8 @@ export default function Portfolio() {
 
                     <div className="flex flex-col md:flex-row justify-between items-center text-sm">
                         <p className="text-green-200">
-                            © {new Date().getFullYear()} Ronald Salili. All rights reserved.
+                            © {new Date().getFullYear()} Ronald Salili. All
+                            rights reserved.
                         </p>
                     </div>
                 </div>
