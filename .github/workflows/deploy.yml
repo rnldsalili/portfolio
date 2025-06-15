@@ -114,6 +114,7 @@ jobs:
               if: steps.changes.outputs.portfolio == 'true' ||  steps.changes.outputs.shared == 'true'
               working-directory: apps/portfolio
               run: pnpm run generate:sitemap
+              continue-on-error: true
 
             - name: Build applications
               if: steps.changes.outputs.portfolio == 'true' ||  steps.changes.outputs.shared == 'true'
