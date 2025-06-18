@@ -127,7 +127,7 @@ export default function Portfolio() {
             title: 'Technical Lead',
             company: 'Beautitag Limited',
             location: 'Remote',
-            period: 'February 2022 - October 2022',
+            period: 'February 2022 - October 2024',
             description:
                 'Led a stable team of 3-4 engineers to deliver 14 web and mobile application projects. Oversaw the development, deployment, and maintenance of scalable systems, including database design and system architecture. Managed code repositories, conducted code reviews, and ensured high-quality deliverables.',
             current: false,
