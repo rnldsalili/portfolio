@@ -37,6 +37,16 @@ export function Layout({ children }: { children: React.ReactNode }) {
                     name="msvalidate.01"
                 />
 
+                {/* Google tag (gtag.js) */}
+                <script async src="https://www.googletagmanager.com/gtag/js?id=G-CE0DJ932ZD"></script>
+                <script>
+                    window.dataLayer = window.dataLayer || [];
+                    function gtag(){dataLayer.push(arguments);}
+                    gtag('js', new Date());
+
+                    gtag('config', 'G-CE0DJ932ZD');
+                </script>
+
                 {/* Open Graph / Facebook / LinkedIn */}
                 <meta content="website" property="og:type" />
                 <meta content="https://ronald.it.com/" property="og:url" />
