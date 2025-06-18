@@ -21,21 +21,6 @@ export const links: Route.LinksFunction = () => [
         rel: 'stylesheet',
         href: 'https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap',
     },
-    { rel: 'icon', href: '/favicon.ico' },
-    {
-        rel: 'icon',
-        type: 'image/png',
-        href: '/favicon-96x96.png',
-        sizes: '96x96',
-    },
-    { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' },
-    { rel: 'shortcut icon', href: '/favicon.ico' },
-    {
-        rel: 'apple-touch-icon',
-        sizes: '180x180',
-        href: '/apple-touch-icon.png',
-    },
-    { rel: 'manifest', href: '/site.webmanifest' },
 ];
 
 export function Layout({ children }: { children: React.ReactNode }) {
@@ -83,6 +68,25 @@ export function Layout({ children }: { children: React.ReactNode }) {
                     content="https://ronald.it.com/og-image.webp"
                     name="twitter:image"
                 />
+                <link
+                    href="/apple-touch-icon.png"
+                    rel="apple-touch-icon"
+                    sizes="180x180"
+                />
+                <link
+                    href="/favicon-32x32.png"
+                    rel="icon"
+                    sizes="32x32"
+                    type="image/png"
+                />
+                <link
+                    href="/favicon-16x16.png"
+                    rel="icon"
+                    sizes="16x16"
+                    type="image/png"
+                />
+                <link href="/site.webmanifest" rel="manifest" />
+
                 <Meta />
                 <Links />
             </head>
