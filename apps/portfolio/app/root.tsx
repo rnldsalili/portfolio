@@ -68,6 +68,8 @@ export function Layout({ children }: { children: React.ReactNode }) {
                     content="https://ronald.it.com/og-image.webp"
                     name="twitter:image"
                 />
+
+                {/* Favicon */}
                 <link
                     href="/apple-touch-icon.png"
                     rel="apple-touch-icon"
