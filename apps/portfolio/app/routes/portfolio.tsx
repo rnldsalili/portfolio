@@ -704,15 +704,6 @@ export default function Portfolio() {
                                     </Link>
                                 </div>
                                 <div className="flex items-center gap-2 text-green-300">
-                                    <Phone className="w-4 h-4" />
-                                    <Link
-                                        className="hover:text-white transition-colors"
-                                        to="tel:+639773517133"
-                                    >
-                                        (+63) 977 351 7133
-                                    </Link>
-                                </div>
-                                <div className="flex items-center gap-2 text-green-300">
                                     <MapPin className="w-4 h-4" />
                                     <span>Albuera, Leyte, Philippines</span>
                                 </div>
