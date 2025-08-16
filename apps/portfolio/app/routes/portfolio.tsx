@@ -7,7 +7,6 @@ import {
     CardHeader,
     CardTitle,
 } from '@portfolio/ui/components/ui/card';
-import { Separator } from '@portfolio/ui/components/ui/separator';
 import {
     Sheet,
     SheetContent,
@@ -19,13 +18,11 @@ import {
     Calendar,
     Code2,
     Database,
-    Download,
     Globe,
     GraduationCap,
     Linkedin,
     Mail,
     MapPin,
-    Phone,
     User,
 } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
@@ -91,9 +88,8 @@ export default function Portfolio() {
             'Koa.js',
             'React Native',
             'Spring Boot',
-            'Ant Design',
         ],
-        'Database Management': ['MongoDB', 'RDBMS', 'Redis'],
+        'Database Management': ['MongoDB', 'Oracle SQL', 'Redis', 'PostgreSQL'],
         'Tools & Technologies': [
             'AWS Services',
             'Docker',
@@ -101,15 +97,6 @@ export default function Portfolio() {
             'RabbitMQ',
             'AppSheet',
             'Git',
-            'Bitbucket',
-        ],
-        'Other Skills': [
-            'Team Mentorship',
-            'Project Management',
-            'Code Reviews',
-            'Testing',
-            'Technical Troubleshooting',
-            'System Architecture Design',
         ],
     };
 
@@ -119,26 +106,27 @@ export default function Portfolio() {
             company: 'Career Team',
             location: 'Remote',
             period: 'October 2024 - Present',
-            description:
-                'Maintained and enhanced existing software systems by troubleshooting issues and implementing new features. Collaborated with cross-functional teams to ensure smooth application performance and user experience. Contributed to DevOps processes by writing automation scripts, configuring GitHub Actions, and managing site deployments.',
+            description: [
+                'Diagnosed and resolved complex software issues, significantly improving application performance and reliability.',
+                'Delivered new features that enhanced usability and addressed key customer needs, leading to positive user feedback.',
+                'Automated deployment processes with GitHub Actions, reducing manual intervention and ensuring consistent release quality.',
+                'Streamlined DevOps pipelines, enabling faster and more efficient development cycles.',
+                'Partnered with developers, QA, and product teams to ensure smooth releases and optimal user experience.',
+            ],
             current: true,
         },
         {
-            title: 'Technical Lead',
+            title: 'Software Engineer',
             company: 'Beautitag Limited',
             location: 'Remote',
-            period: 'February 2022 - October 2024',
-            description:
-                'Led a stable team of 3-4 engineers to deliver 14 web and mobile application projects. Oversaw the development, deployment, and maintenance of scalable systems, including database design and system architecture. Managed code repositories, conducted code reviews, and ensured high-quality deliverables.',
-            current: false,
-        },
-        {
-            title: 'Jr. Software Engineer',
-            company: 'Beautitag Limited',
-            location: 'Remote',
-            period: 'November 2021 - February 2022',
-            description:
-                'Contributed to project development by studying existing codebases and building new components with JavaScript, Koa.js, and React.js. Maintained high code quality by following coding standards and best practices.',
+            period: 'November 2021 - October 2024',
+            description: [
+                'Led a high-performing team of 3–4 engineers to successfully deliver 14 web and mobile application projects on time and within scope, ensuring client satisfaction and repeat business.',
+                'Designed and implemented scalable system architectures and optimized database structures, improving application performance and maintainability.',
+                'Maintained high code quality through rigorous code reviews and adherence to best practices, reducing technical debt.',
+                'Developed new application components using JavaScript, Koa.js, and React.js, accelerating feature delivery and improving user experience.',
+                'Improved team productivity by introducing best practices and coding standards, resulting in more maintainable and consistent codebases.',
+            ],
             current: false,
         },
         {
@@ -146,8 +134,12 @@ export default function Portfolio() {
             company: 'Philippine Statistics Authority',
             location: 'Albuera, Leyte',
             period: 'March 2021 - August 2021',
-            description:
-                'Supervised the PhilSys Step II Registration, registering around 35,000 individuals. Managed registrant flow, resolved technical issues, and approved biometric exemptions. Developed a no-code mobile app and automation tools to improve daily operations.',
+            description: [
+                'Supervised the PhilSys Step II Registration, successfully registering ~35,000 individuals while ensuring smooth operations, compliance, and minimal downtime.',
+                'Developed and deployed a no-code mobile app and automation tools, improving data accuracy and reducing manual report creation time by up to 60%.',
+                'Managed registrant flow, resolved on-site technical issues, and approved biometric exemptions to maintain high throughput and service quality.',
+                'Coordinated with local officials, handled data uploads, and prepared daily reports to support efficient decision-making and program tracking.',
+            ],
             current: false,
         },
     ];
@@ -418,20 +410,6 @@ export default function Portfolio() {
                                 Get In Touch
                             </Button>
                         </Link>
-                        <Button
-                            className="transition-all duration-300 transform hover:scale-105 hover:-translate-y-1 hover:border-green-700 hover:text-green-700 shadow-xl hover:shadow-2xl border-2 hover:bg-gradient-to-r hover:from-green-50 hover:to-emerald-50 backdrop-blur-sm"
-                            size="lg"
-                            variant="outline"
-                            onClick={() => {
-                                window.open(
-                                    'https://assets.ronald.it.com/salili_ronald_resume.pdf',
-                                    '_blank',
-                                );
-                            }}
-                        >
-                            <Download className="w-5 h-5 mr-2" />
-                            Download Resume
-                        </Button>
                     </div>
                 </div>
             </section>
@@ -559,9 +537,34 @@ export default function Portfolio() {
                                         </div>
                                     </CardHeader>
                                     <CardContent className="p-8 bg-gradient-to-br from-white to-green-50/30">
-                                        <p className="text-slate-600 leading-relaxed text-base">
-                                            {job.description}
-                                        </p>
+                                        <ul className="text-slate-600 leading-relaxed text-base space-y-3">
+                                            {Array.isArray(job.description) ? (
+                                                job.description.map(
+                                                    (bullet, index) => (
+                                                        <li
+                                                            key={index}
+                                                            className="flex items-start"
+                                                        >
+                                                            <span className="text-green-600 mr-3 mt-0.5 text-xl font-bold flex-shrink-0">
+                                                                •
+                                                            </span>
+                                                            <span className="flex-1">
+                                                                {bullet}
+                                                            </span>
+                                                        </li>
+                                                    ),
+                                                )
+                                            ) : (
+                                                <li className="flex items-start">
+                                                    <span className="text-green-600 mr-3 mt-0.5 text-xl font-bold flex-shrink-0">
+                                                        •
+                                                    </span>
+                                                    <span className="flex-1">
+                                                        {job.description}
+                                                    </span>
+                                                </li>
+                                            )}
+                                        </ul>
                                     </CardContent>
                                 </Card>
                             </div>
