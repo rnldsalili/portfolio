@@ -240,62 +240,62 @@ export default function Portfolio() {
 
     return (
         <div className="min-h-screen bg-gradient-to-br from-green-50 via-emerald-50 to-teal-50 relative overflow-hidden">
-            {/* Floating background elements */}
-            <div className="floating-element w-64 h-64 bg-green-200 top-10 left-10" />
-            <div className="floating-element w-32 h-32 bg-emerald-200 top-1/3 right-20" />
-            <div className="floating-element w-48 h-48 bg-teal-200 bottom-20 left-1/4" />
+            {/* Enhanced floating background elements with glass morphism */}
+            <div className="floating-element w-64 h-64 bg-gradient-to-br from-green-200/30 to-emerald-300/20 top-10 left-10 backdrop-blur-sm border border-green-300/20" />
+            <div className="floating-element w-32 h-32 bg-gradient-to-br from-emerald-200/40 to-teal-300/30 top-1/3 right-20 backdrop-blur-sm border border-emerald-300/20" />
+            <div className="floating-element w-48 h-48 bg-gradient-to-br from-teal-200/30 to-green-300/20 bottom-20 left-1/4 backdrop-blur-sm border border-teal-300/20" />
 
-            {/* Navigation */}
-            <nav className="fixed top-0 w-full bg-gradient-to-r from-white/95 via-green-50/95 to-emerald-50/95 backdrop-blur-lg border-b border-green-200 z-50 shadow-lg">
+            {/* Enhanced Navigation with glass morphism */}
+            <nav className="fixed top-0 w-full bg-gradient-to-r from-white/90 via-green-50/85 to-emerald-50/85 backdrop-blur-xl border-b border-green-200/30 z-50 shadow-2xl shadow-green-100/50">
                 <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="flex justify-between items-center h-20">
-                        {/* Logo/Name Section */}
+                        {/* Enhanced Logo/Name Section */}
                         <div className="flex items-center space-x-3">
-                            <div className="w-10 h-10 bg-gradient-to-br from-green-600 to-emerald-600 rounded-lg flex items-center justify-center shadow-md">
-                                <Code2 className="w-6 h-6 text-white" />
+                            <div className="w-10 h-10 bg-gradient-to-br from-green-600 via-emerald-600 to-teal-600 rounded-xl flex items-center justify-center shadow-lg shadow-green-600/30 hover:shadow-xl hover:shadow-green-600/40 transition-all duration-300 hover:scale-105">
+                                <Code2 className="w-6 h-6 text-white drop-shadow-sm" />
                             </div>
                             <div>
-                                <div className="font-bold text-xl text-slate-800">
+                                <div className="font-bold text-xl text-slate-800 tracking-tight">
                                     Ronald Salili
                                 </div>
-                                <div className="text-xs text-green-600 font-medium">
+                                <div className="text-xs text-green-600 font-medium tracking-wide">
                                     Software Engineer
                                 </div>
                             </div>
                         </div>
 
-                        {/* Desktop Navigation */}
+                        {/* Enhanced Desktop Navigation */}
                         <div className="hidden md:flex items-center space-x-1">
                             <Link
-                                className="px-4 py-2 text-slate-600 hover:text-green-700 hover:bg-green-50 rounded-lg transition-all duration-300 font-medium"
+                                className="px-4 py-2 text-slate-600 hover:text-green-700 hover:bg-gradient-to-r hover:from-green-50 hover:to-emerald-50 rounded-xl transition-all duration-300 font-medium hover:shadow-md hover:shadow-green-100/50 hover:scale-105"
                                 to="#about"
                             >
                                 About
                             </Link>
                             <Link
-                                className="px-4 py-2 text-slate-600 hover:text-green-700 hover:bg-green-50 rounded-lg transition-all duration-300 font-medium"
+                                className="px-4 py-2 text-slate-600 hover:text-green-700 hover:bg-gradient-to-r hover:from-green-50 hover:to-emerald-50 rounded-xl transition-all duration-300 font-medium hover:shadow-md hover:shadow-green-100/50 hover:scale-105"
                                 to="#experience"
                             >
                                 Experience
                             </Link>
                             <Link
-                                className="px-4 py-2 text-slate-600 hover:text-green-700 hover:bg-green-50 rounded-lg transition-all duration-300 font-medium"
+                                className="px-4 py-2 text-slate-600 hover:text-green-700 hover:bg-gradient-to-r hover:from-green-50 hover:to-emerald-50 rounded-xl transition-all duration-300 font-medium hover:shadow-md hover:shadow-green-100/50 hover:scale-105"
                                 to="#skills"
                             >
                                 Skills
                             </Link>
                             <Link
-                                className="px-4 py-2 text-slate-600 hover:text-green-700 hover:bg-green-50 rounded-lg transition-all duration-300 font-medium"
+                                className="px-4 py-2 text-slate-600 hover:text-green-700 hover:bg-gradient-to-r hover:from-green-50 hover:to-emerald-50 rounded-xl transition-all duration-300 font-medium hover:shadow-md hover:shadow-green-100/50 hover:scale-105"
                                 to="#education"
                             >
                                 Education
                             </Link>
 
-                            {/* CTA Button */}
-                            <div className="ml-4 pl-4 border-l border-green-200">
+                            {/* Enhanced CTA Button */}
+                            <div className="ml-4 pl-4 border-l border-green-200/50">
                                 <Link to={`mailto:${EMAIL}`}>
                                     <Button
-                                        className="bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white shadow-md hover:shadow-lg transition-all duration-300 transform hover:scale-105"
+                                        className="bg-gradient-to-r from-green-600 via-emerald-600 to-teal-600 hover:from-green-700 hover:via-emerald-700 hover:to-teal-700 text-white shadow-lg shadow-green-600/30 hover:shadow-xl hover:shadow-green-600/40 transition-all duration-300 transform hover:scale-105 hover:-translate-y-0.5 border border-green-500/20"
                                         size="sm"
                                     >
                                         <Mail className="w-4 h-4 mr-2" />
@@ -311,7 +311,7 @@ export default function Portfolio() {
                                 <SheetTrigger asChild>
                                     <Button
                                         aria-label="Open navigation menu"
-                                        className="text-slate-600 hover:text-green-700 hover:bg-green-50"
+                                        className="text-slate-600 hover:text-green-700 hover:bg-gradient-to-r hover:from-green-50 hover:to-emerald-50 hover:shadow-md hover:shadow-green-100/50 rounded-xl"
                                         size="sm"
                                         variant="ghost"
                                     >
@@ -331,33 +331,33 @@ export default function Portfolio() {
                                     </Button>
                                 </SheetTrigger>
                                 <SheetContent
-                                    className="p-0 w-64 max-w-full bg-white/60 backdrop-blur-lg border-r border-green-200"
+                                    className="p-0 w-64 max-w-full bg-white/80 backdrop-blur-xl border-r border-green-200/30 shadow-2xl shadow-green-100/50"
                                     side="right"
                                 >
                                     <div className="px-2 pt-10 pb-3 space-y-4">
                                         <Link
-                                            className="block px-3 py-2 text-slate-800 text-lg hover:text-green-700 hover:bg-green-50 rounded-md transition-colors duration-300 font-medium"
+                                            className="block px-3 py-2 text-slate-800 text-lg hover:text-green-700 hover:bg-gradient-to-r hover:from-green-50 hover:to-emerald-50 rounded-xl transition-all duration-300 font-medium hover:shadow-md hover:shadow-green-100/30 hover:scale-105"
                                             onClick={() => setOpen(false)}
                                             to="#about"
                                         >
                                             About
                                         </Link>
                                         <Link
-                                            className="block px-3 py-2 text-slate-800 text-lg hover:text-green-700 hover:bg-green-50 rounded-md transition-colors duration-300 font-medium"
+                                            className="block px-3 py-2 text-slate-800 text-lg hover:text-green-700 hover:bg-gradient-to-r hover:from-green-50 hover:to-emerald-50 rounded-xl transition-all duration-300 font-medium hover:shadow-md hover:shadow-green-100/30 hover:scale-105"
                                             onClick={() => setOpen(false)}
                                             to="#experience"
                                         >
                                             Experience
                                         </Link>
                                         <Link
-                                            className="block px-3 py-2 text-slate-800 text-lg hover:text-green-700 hover:bg-green-50 rounded-md transition-colors duration-300 font-medium"
+                                            className="block px-3 py-2 text-slate-800 text-lg hover:text-green-700 hover:bg-gradient-to-r hover:from-green-50 hover:to-emerald-50 rounded-xl transition-all duration-300 font-medium hover:shadow-md hover:shadow-green-100/30 hover:scale-105"
                                             onClick={() => setOpen(false)}
                                             to="#skills"
                                         >
                                             Skills
                                         </Link>
                                         <Link
-                                            className="block px-3 py-2 text-slate-800 text-lg hover:text-green-700 hover:bg-green-50 rounded-md transition-colors duration-300 font-medium"
+                                            className="block px-3 py-2 text-slate-800 text-lg hover:text-green-700 hover:bg-gradient-to-r hover:from-green-50 hover:to-emerald-50 rounded-xl transition-all duration-300 font-medium hover:shadow-md hover:shadow-green-100/30 hover:scale-105"
                                             onClick={() => setOpen(false)}
                                             to="#education"
                                         >
@@ -366,7 +366,7 @@ export default function Portfolio() {
                                         <div className="pt-2">
                                             <Link to={`mailto:${EMAIL}`}>
                                                 <Button
-                                                    className="w-full bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white shadow-md"
+                                                    className="w-full bg-gradient-to-r from-green-600 via-emerald-600 to-teal-600 hover:from-green-700 hover:via-emerald-700 hover:to-teal-700 text-white shadow-lg shadow-green-600/30 hover:shadow-xl hover:shadow-green-600/40 hover:scale-105 transition-all duration-300"
                                                     size="sm"
                                                     onClick={() =>
                                                         setOpen(false)
@@ -385,23 +385,23 @@ export default function Portfolio() {
                 </div>
             </nav>
 
-            {/* Hero Section */}
+            {/* Enhanced Hero Section */}
             <section className="min-h-screen pt-32 pb-20 flex px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-green-100 via-emerald-100 to-teal-100 bg-pattern relative">
                 <div className="self-center max-w-6xl mx-auto text-center relative z-10">
                     <div className="mb-8">
-                        <div className="w-32 h-32 bg-gradient-to-br from-green-700 to-green-500 rounded-full mx-auto mb-6 flex items-center justify-center transition-transform duration-700 hover:scale-110 shadow-2xl">
-                            <Code2 className="w-16 h-16 text-white" />
+                        <div className="w-32 h-32 bg-gradient-to-br from-green-700 via-emerald-600 to-teal-600 rounded-full mx-auto mb-6 flex items-center justify-center transition-all duration-700 hover:scale-110 hover:rotate-12 shadow-2xl shadow-green-600/40 hover:shadow-3xl hover:shadow-green-600/50 border-4 border-white/30 backdrop-blur-sm">
+                            <Code2 className="w-16 h-16 text-white drop-shadow-lg" />
                         </div>
                         <h1
-                            className="text-5xl md:text-6xl font-bold text-slate-900 mb-4"
+                            className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-slate-900 via-green-800 to-emerald-800 bg-clip-text text-transparent mb-4 tracking-tight"
                             style={{ fontSize: '3rem' }}
                         >
                             Ronald Salili
                         </h1>
-                        <h2 className="text-2xl md:text-3xl text-green-700 font-semibold mb-6">
+                        <h2 className="text-2xl md:text-3xl bg-gradient-to-r from-green-700 via-emerald-600 to-teal-600 bg-clip-text text-transparent font-semibold mb-6 tracking-wide">
                             Software Engineer
                         </h2>
-                        <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
+                        <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed font-light">
                             Full-stack developer specializing in the JavaScript
                             and TypeScript ecosystem. Skilled in delivering
                             scalable web and mobile applications with modern
@@ -411,7 +411,7 @@ export default function Portfolio() {
                     <div className="flex flex-col sm:flex-row gap-4 justify-center">
                         <Link to={`mailto:${EMAIL}`}>
                             <Button
-                                className="w-full bg-green-700 hover:bg-green-800 transition-all duration-300 transform hover:scale-105 shadow-lg"
+                                className="w-full bg-gradient-to-r from-green-700 via-emerald-700 to-teal-700 hover:from-green-800 hover:via-emerald-800 hover:to-teal-800 transition-all duration-300 transform hover:scale-105 hover:-translate-y-1 shadow-xl shadow-green-700/40 hover:shadow-2xl hover:shadow-green-700/50 border border-green-600/20"
                                 size="lg"
                             >
                                 <Mail className="w-5 h-5 mr-2" />
@@ -419,7 +419,7 @@ export default function Portfolio() {
                             </Button>
                         </Link>
                         <Button
-                            className="transition-all duration-300 transform hover:scale-105 hover:border-green-700 hover:text-green-700 shadow-lg"
+                            className="transition-all duration-300 transform hover:scale-105 hover:-translate-y-1 hover:border-green-700 hover:text-green-700 shadow-xl hover:shadow-2xl border-2 hover:bg-gradient-to-r hover:from-green-50 hover:to-emerald-50 backdrop-blur-sm"
                             size="lg"
                             variant="outline"
                             onClick={() => {
@@ -436,54 +436,60 @@ export default function Portfolio() {
                 </div>
             </section>
 
-            {/* About Section */}
-            <SectionObserver className="py-10 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-white via-green-50 to-emerald-50 bg-mesh">
+            {/* Enhanced About Section */}
+            <SectionObserver className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-white via-green-50 to-emerald-50 bg-mesh">
                 <div className="max-w-6xl mx-auto" id="about">
-                    <div className="text-center mb-16">
-                        <h2 className="text-4xl font-bold text-slate-900 mb-4">
+                    <div className="text-center mb-20">
+                        <h2 className="text-4xl font-bold bg-gradient-to-r from-slate-900 via-green-800 to-emerald-800 bg-clip-text text-transparent mb-6 tracking-tight">
                             About Me
                         </h2>
-                        <div className="w-24 h-1 bg-gradient-to-r from-green-600 to-emerald-600 mx-auto" />
+                        <div className="w-32 h-1.5 bg-gradient-to-r from-green-600 via-emerald-600 to-teal-600 mx-auto rounded-full shadow-lg shadow-green-600/30" />
                     </div>
                     <div className="grid md:grid-cols-3 gap-8">
-                        <Card className="text-center p-6 hover:shadow-xl transition-all duration-300 hover:-translate-y-2 stagger-item bg-gradient-to-br from-white to-green-50 border-green-100">
+                        <Card className="text-center p-8 hover:shadow-2xl transition-all duration-500 hover:-translate-y-4 hover:rotate-1 stagger-item bg-gradient-to-br from-white via-green-50/50 to-emerald-50 border-green-200/50 backdrop-blur-sm hover:border-green-300/60 group">
                             <CardHeader>
-                                <Globe className="w-12 h-12 text-green-700 mx-auto mb-4" />
-                                <CardTitle className="text-xl">
+                                <div className="w-16 h-16 bg-gradient-to-br from-green-600 to-emerald-600 rounded-2xl mx-auto mb-6 flex items-center justify-center shadow-lg shadow-green-600/30 group-hover:shadow-xl group-hover:shadow-green-600/40 group-hover:scale-110 transition-all duration-300">
+                                    <Globe className="w-8 h-8 text-white" />
+                                </div>
+                                <CardTitle className="text-xl font-semibold bg-gradient-to-r from-green-700 to-emerald-700 bg-clip-text text-transparent">
                                     Full-Stack Development
                                 </CardTitle>
                             </CardHeader>
                             <CardContent>
-                                <p className="text-slate-600">
+                                <p className="text-slate-600 leading-relaxed">
                                     Experienced in architecting solutions and
                                     implementing microservices with modern
                                     frameworks.
                                 </p>
                             </CardContent>
                         </Card>
-                        <Card className="text-center p-6 hover:shadow-xl transition-all duration-300 hover:-translate-y-2 stagger-item bg-gradient-to-br from-white to-emerald-50 border-emerald-100">
+                        <Card className="text-center p-8 hover:shadow-2xl transition-all duration-500 hover:-translate-y-4 hover:-rotate-1 stagger-item bg-gradient-to-br from-white via-emerald-50/50 to-teal-50 border-emerald-200/50 backdrop-blur-sm hover:border-emerald-300/60 group">
                             <CardHeader>
-                                <Database className="w-12 h-12 text-green-700 mx-auto mb-4" />
-                                <CardTitle className="text-xl">
+                                <div className="w-16 h-16 bg-gradient-to-br from-emerald-600 to-teal-600 rounded-2xl mx-auto mb-6 flex items-center justify-center shadow-lg shadow-emerald-600/30 group-hover:shadow-xl group-hover:shadow-emerald-600/40 group-hover:scale-110 transition-all duration-300">
+                                    <Database className="w-8 h-8 text-white" />
+                                </div>
+                                <CardTitle className="text-xl font-semibold bg-gradient-to-r from-emerald-700 to-teal-700 bg-clip-text text-transparent">
                                     Database Design
                                 </CardTitle>
                             </CardHeader>
                             <CardContent>
-                                <p className="text-slate-600">
+                                <p className="text-slate-600 leading-relaxed">
                                     Skilled in designing databases and managing
                                     end-to-end development processes.
                                 </p>
                             </CardContent>
                         </Card>
-                        <Card className="text-center p-6 hover:shadow-xl transition-all duration-300 hover:-translate-y-2 stagger-item bg-gradient-to-br from-white to-teal-50 border-teal-100">
+                        <Card className="text-center p-8 hover:shadow-2xl transition-all duration-500 hover:-translate-y-4 hover:rotate-1 stagger-item bg-gradient-to-br from-white via-teal-50/50 to-green-50 border-teal-200/50 backdrop-blur-sm hover:border-teal-300/60 group">
                             <CardHeader>
-                                <User className="w-12 h-12 text-green-700 mx-auto mb-4" />
-                                <CardTitle className="text-xl">
+                                <div className="w-16 h-16 bg-gradient-to-br from-teal-600 to-green-600 rounded-2xl mx-auto mb-6 flex items-center justify-center shadow-lg shadow-teal-600/30 group-hover:shadow-xl group-hover:shadow-teal-600/40 group-hover:scale-110 transition-all duration-300">
+                                    <User className="w-8 h-8 text-white" />
+                                </div>
+                                <CardTitle className="text-xl font-semibold bg-gradient-to-r from-teal-700 to-green-700 bg-clip-text text-transparent">
                                     Team Leadership
                                 </CardTitle>
                             </CardHeader>
                             <CardContent>
-                                <p className="text-slate-600">
+                                <p className="text-slate-600 leading-relaxed">
                                     Proven ability to lead teams and integrate
                                     APIs while ensuring high-quality
                                     deliverables.
@@ -494,15 +500,15 @@ export default function Portfolio() {
                 </div>
             </SectionObserver>
 
-            {/* Experience Section - Timeline */}
-            <section className="py-10 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-slate-50 via-green-50 to-emerald-50">
+            {/* Enhanced Experience Section - Timeline */}
+            <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-slate-50 via-green-50 to-emerald-50">
                 <div className="max-w-6xl mx-auto" id="experience">
-                    <div className="text-center mb-16">
-                        <h2 className="text-4xl font-bold text-slate-900 mb-4">
+                    <div className="text-center mb-20">
+                        <h2 className="text-4xl font-bold bg-gradient-to-r from-slate-900 via-green-800 to-emerald-800 bg-clip-text text-transparent mb-6 tracking-tight">
                             Work Experience
                         </h2>
-                        <div className="w-24 h-1 bg-gradient-to-r from-green-600 to-emerald-600 mx-auto" />
-                        <p className="text-lg text-slate-600 mt-4">
+                        <div className="w-32 h-1.5 bg-gradient-to-r from-green-600 via-emerald-600 to-teal-600 mx-auto rounded-full shadow-lg shadow-green-600/30" />
+                        <p className="text-lg text-slate-600 mt-6 font-light">
                             My professional journey through the years
                         </p>
                     </div>
@@ -514,39 +520,46 @@ export default function Portfolio() {
                         {experience.map((job, index) => (
                             <div className="timeline-item" key={index}>
                                 <div className="timeline-marker" />
-                                <Card className="timeline-content border-0 overflow-hidden gap-0">
-                                    <CardHeader className="py-4 bg-gradient-to-r from-green-600 to-emerald-600 text-white">
-                                        <div className="flex items-center justify-between flex-wrap gap-2">
-                                            <div className="flex items-center gap-3">
-                                                <Building2 className="w-6 h-6" />
+                                <Card className="timeline-content border-0 overflow-hidden gap-0 shadow-xl hover:shadow-2xl transition-all duration-500 hover:scale-[1.02] backdrop-blur-sm border border-green-200/30">
+                                    <CardHeader className="py-6 bg-gradient-to-r from-green-600 via-emerald-600 to-teal-600 text-white relative overflow-hidden">
+                                        <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent" />
+                                        <div className="flex items-center justify-between flex-wrap gap-2 relative z-10">
+                                            <div className="flex items-center gap-4">
+                                                <div className="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center backdrop-blur-sm">
+                                                    <Building2 className="w-6 h-6 text-white" />
+                                                </div>
                                                 <div>
-                                                    <CardTitle className="text-xl text-white">
+                                                    <CardTitle className="text-xl text-white font-semibold tracking-tight">
                                                         {job.title}
                                                     </CardTitle>
-                                                    <CardDescription className="text-green-100 font-semibold text-base">
+                                                    <CardDescription className="text-green-100 font-medium text-base">
                                                         {job.company}
                                                     </CardDescription>
                                                 </div>
                                             </div>
                                             {job.current && (
-                                                <Badge className="bg-yellow-400 text-yellow-900 hover:bg-yellow-300">
+                                                <Badge className="bg-gradient-to-r from-yellow-400 to-yellow-300 text-yellow-900 hover:from-yellow-300 hover:to-yellow-200 shadow-lg shadow-yellow-400/30 border-0 font-medium">
                                                     Current
                                                 </Badge>
                                             )}
                                         </div>
-                                        <div className="flex flex-col sm:flex-row sm:items-center gap-2 mt-3 text-green-100">
-                                            <div className="flex items-center">
+                                        <div className="flex flex-col sm:flex-row sm:items-center gap-3 mt-4 text-green-100 relative z-10">
+                                            <div className="flex items-center bg-white/10 rounded-lg px-3 py-1.5 backdrop-blur-sm">
                                                 <Calendar className="w-4 h-4 mr-2" />
-                                                {job.period}
+                                                <span className="text-sm font-medium">
+                                                    {job.period}
+                                                </span>
                                             </div>
-                                            <div className="flex items-center">
+                                            <div className="flex items-center bg-white/10 rounded-lg px-3 py-1.5 backdrop-blur-sm">
                                                 <MapPin className="w-4 h-4 mr-2" />
-                                                {job.location}
+                                                <span className="text-sm font-medium">
+                                                    {job.location}
+                                                </span>
                                             </div>
                                         </div>
                                     </CardHeader>
-                                    <CardContent className="p-6">
-                                        <p className="text-slate-600 leading-relaxed">
+                                    <CardContent className="p-8 bg-gradient-to-br from-white to-green-50/30">
+                                        <p className="text-slate-600 leading-relaxed text-base">
                                             {job.description}
                                         </p>
                                     </CardContent>
@@ -557,26 +570,29 @@ export default function Portfolio() {
                 </div>
             </section>
 
-            {/* Skills Section */}
-            <SectionObserver className="py-10 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-green-50 via-emerald-50 to-teal-50 bg-mesh">
+            {/* Enhanced Skills Section */}
+            <SectionObserver className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-green-50 via-emerald-50 to-teal-50 bg-mesh">
                 <div className="max-w-6xl mx-auto" id="skills">
-                    <div className="text-center mb-12">
-                        <h2 className="text-4xl font-bold text-slate-900 mb-4">
+                    <div className="text-center mb-16">
+                        <h2 className="text-4xl font-bold bg-gradient-to-r from-slate-900 via-green-800 to-emerald-800 bg-clip-text text-transparent mb-6 tracking-tight">
                             Skills & Technologies
                         </h2>
-                        <div className="w-24 h-1 bg-gradient-to-r from-green-600 to-emerald-600 mx-auto" />
+                        <div className="w-32 h-1.5 bg-gradient-to-r from-green-600 via-emerald-600 to-teal-600 mx-auto rounded-full shadow-lg shadow-green-600/30" />
                     </div>
-                    <div className="flex flex-col gap-8 items-center">
+                    <div className="flex flex-col gap-6 items-center">
                         {Object.entries(skills).map(
                             ([category, skillList], idx) => (
-                                <div className="w-full max-w-2xl" key={idx}>
-                                    <h3 className="text-lg font-semibold text-green-700 mb-2">
+                                <div
+                                    className="w-full max-w-4xl bg-white/60 backdrop-blur-sm rounded-2xl p-8 shadow-xl border border-green-200/30 hover:shadow-2xl transition-all duration-500 hover:scale-[1.02]"
+                                    key={idx}
+                                >
+                                    <h3 className="text-xl font-bold bg-gradient-to-r from-green-700 via-emerald-700 to-teal-700 bg-clip-text text-transparent mb-6 text-center tracking-wide">
                                         {category}
                                     </h3>
-                                    <div className="flex flex-wrap gap-2">
+                                    <div className="flex flex-wrap gap-3 justify-center">
                                         {skillList.map((skill, skillIdx) => (
                                             <Badge
-                                                className="bg-green-100 text-green-800 border border-green-200 px-3 py-1 rounded-full text-sm font-medium"
+                                                className="bg-gradient-to-r from-green-100 via-emerald-100 to-teal-100 text-green-800 border border-green-300/50 px-4 py-2 rounded-full text-sm font-medium hover:from-green-200 hover:via-emerald-200 hover:to-teal-200 hover:scale-105 hover:shadow-lg hover:shadow-green-200/50 transition-all duration-300 cursor-default backdrop-blur-sm"
                                                 key={skillIdx}
                                             >
                                                 {skill}
@@ -590,43 +606,49 @@ export default function Portfolio() {
                 </div>
             </SectionObserver>
 
-            {/* Education & Certificates */}
-            <SectionObserver className="py-10 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-slate-50 via-green-50 to-emerald-50">
+            {/* Enhanced Education & Certificates */}
+            <SectionObserver className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-slate-50 via-green-50 to-emerald-50">
                 <div className="max-w-6xl mx-auto" id="education">
-                    <div className="text-center mb-16">
-                        <h2 className="text-4xl font-bold text-slate-900 mb-4">
+                    <div className="text-center mb-20">
+                        <h2 className="text-4xl font-bold bg-gradient-to-r from-slate-900 via-green-800 to-emerald-800 bg-clip-text text-transparent mb-6 tracking-tight">
                             Education & Certificates
                         </h2>
-                        <div className="w-24 h-1 bg-gradient-to-r from-green-600 to-emerald-600 mx-auto" />
+                        <div className="w-32 h-1.5 bg-gradient-to-r from-green-600 via-emerald-600 to-teal-600 mx-auto rounded-full shadow-lg shadow-green-600/30" />
                     </div>
                     <div className="grid md:grid-cols-2 gap-8">
                         <div>
-                            <h3 className="text-2xl font-semibold text-slate-900 mb-6 flex items-center">
-                                <GraduationCap className="w-6 h-6 mr-2 text-green-700" />
+                            <h3 className="text-2xl font-bold bg-gradient-to-r from-green-700 via-emerald-700 to-teal-700 bg-clip-text text-transparent mb-8 flex items-center">
+                                <div className="w-8 h-8 bg-gradient-to-br from-green-600 to-emerald-600 rounded-lg mr-3 flex items-center justify-center">
+                                    <GraduationCap className="w-5 h-5 text-white" />
+                                </div>
                                 Education
                             </h3>
-                            <div className="space-y-6">
+                            <div className="space-y-8">
                                 {education.map((edu, index) => (
                                     <Card
-                                        className="p-6 hover:shadow-xl transition-all duration-300 hover:-translate-y-1 stagger-item bg-gradient-to-br from-white to-green-50 border-green-100"
+                                        className="p-8 hover:shadow-2xl transition-all duration-500 hover:-translate-y-3 hover:rotate-1 stagger-item bg-gradient-to-br from-white via-green-50/30 to-emerald-50 border-green-200/50 backdrop-blur-sm hover:border-green-300/60 group"
                                         key={index}
                                     >
-                                        <CardHeader className="pb-2">
-                                            <CardTitle className="text-lg text-slate-900">
+                                        <CardHeader className="pb-4">
+                                            <CardTitle className="text-xl font-bold text-slate-900 group-hover:text-green-800 transition-colors duration-300">
                                                 {edu.degree}
                                             </CardTitle>
-                                            <CardDescription className="text-green-700 font-semibold">
+                                            <CardDescription className="text-green-700 font-semibold text-lg">
                                                 {edu.school}
                                             </CardDescription>
                                         </CardHeader>
                                         <CardContent>
-                                            <div className="flex items-center text-slate-600 mb-1">
-                                                <MapPin className="w-4 h-4 mr-2" />
-                                                {edu.location}
+                                            <div className="flex items-center text-slate-600 mb-2 bg-white/50 rounded-lg px-3 py-2">
+                                                <MapPin className="w-4 h-4 mr-2 text-green-600" />
+                                                <span className="font-medium">
+                                                    {edu.location}
+                                                </span>
                                             </div>
-                                            <div className="flex items-center text-slate-600">
-                                                <Calendar className="w-4 h-4 mr-2" />
-                                                {edu.period}
+                                            <div className="flex items-center text-slate-600 bg-white/50 rounded-lg px-3 py-2">
+                                                <Calendar className="w-4 h-4 mr-2 text-green-600" />
+                                                <span className="font-medium">
+                                                    {edu.period}
+                                                </span>
                                             </div>
                                         </CardContent>
                                     </Card>
@@ -634,25 +656,31 @@ export default function Portfolio() {
                             </div>
                         </div>
                         <div>
-                            <h3 className="text-2xl font-semibold text-slate-900 mb-6 flex items-center">
-                                <Award className="w-6 h-6 mr-2 text-green-700" />
+                            <h3 className="text-2xl font-bold bg-gradient-to-r from-emerald-700 via-teal-700 to-green-700 bg-clip-text text-transparent mb-8 flex items-center">
+                                <div className="w-8 h-8 bg-gradient-to-br from-emerald-600 to-teal-600 rounded-lg mr-3 flex items-center justify-center">
+                                    <Award className="w-5 h-5 text-white" />
+                                </div>
                                 Certificates
                             </h3>
-                            <Card className="p-6 hover:shadow-xl transition-all duration-300 bg-gradient-to-br from-white to-emerald-50 border-emerald-100">
+                            <Card className="p-8 hover:shadow-2xl transition-all duration-500 hover:-translate-y-3 hover:-rotate-1 bg-gradient-to-br from-white via-emerald-50/30 to-teal-50 border-emerald-200/50 backdrop-blur-sm hover:border-emerald-300/60 group">
                                 <CardContent className="pt-0">
-                                    <div className="flex flex-col gap-4">
+                                    <div className="flex flex-col gap-6">
                                         {certificates.map((cert, index) => (
                                             <Link
-                                                className="font-semibold text-slate-900 hover:text-green-700 transition-colors"
+                                                className="font-semibold text-slate-900 hover:text-emerald-700 transition-all duration-300"
                                                 key={index}
                                                 target="_blank"
                                                 to={cert.link}
                                             >
-                                                <div className="flex items-center p-4 bg-gradient-to-r from-green-50 to-emerald-50 rounded-lg transition-all duration-300 hover:from-green-100 hover:to-emerald-100 stagger-item border border-green-100">
-                                                    <Award className="w-5 h-5 text-green-700 mr-3" />
+                                                <div className="flex items-center p-6 bg-gradient-to-r from-emerald-50/60 to-teal-50/60 rounded-xl transition-all duration-300 hover:from-emerald-100/80 hover:to-teal-100/80 hover:shadow-lg hover:shadow-emerald-200/50 hover:scale-[1.02] stagger-item border border-emerald-200/40 backdrop-blur-sm group">
+                                                    <div className="w-12 h-12 bg-gradient-to-br from-emerald-500 to-teal-500 rounded-xl flex items-center justify-center mr-4 group-hover:scale-110 transition-transform duration-300 shadow-lg shadow-emerald-500/30">
+                                                        <Award className="w-6 h-6 text-white" />
+                                                    </div>
                                                     <div>
-                                                        {cert.label}
-                                                        <p className="text-sm text-slate-600">
+                                                        <div className="font-semibold text-slate-900 group-hover:text-emerald-800 transition-colors duration-300">
+                                                            {cert.label}
+                                                        </div>
+                                                        <p className="text-sm text-slate-600 font-medium mt-1">
                                                             Coursera
                                                         </p>
                                                     </div>
@@ -667,50 +695,62 @@ export default function Portfolio() {
                 </div>
             </SectionObserver>
 
-            {/* Footer */}
-            <footer className="bg-gradient-to-r from-green-900 via-emerald-900 to-teal-900 text-white py-8 px-4 sm:px-6 lg:px-8">
-                <div className="max-w-6xl mx-auto">
-                    <div className="grid md:grid-cols-4 gap-6 mb-6">
-                        {/* Profile Section */}
+            {/* Enhanced Footer */}
+            <footer className="bg-gradient-to-r from-green-900 via-emerald-900 to-teal-900 text-white py-16 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+                {/* Background elements */}
+                <div className="absolute inset-0 bg-gradient-to-br from-green-800/20 to-teal-800/20" />
+                <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.1)_1px,transparent_1px)] bg-[length:50px_50px]" />
+
+                <div className="max-w-6xl mx-auto relative z-10">
+                    <div className="grid md:grid-cols-4 gap-8 mb-8">
+                        {/* Enhanced Profile Section */}
                         <div className="md:col-span-2">
-                            <h3 className="text-xl font-bold mb-2 flex items-center gap-2">
-                                <Code2 className="w-5 h-5" />
-                                Ronald Salili
-                            </h3>
-                            <p className="text-green-200 mb-3">
+                            <div className="flex items-center gap-3 mb-4">
+                                <div className="w-10 h-10 bg-gradient-to-br from-green-400 to-emerald-400 rounded-xl flex items-center justify-center shadow-lg shadow-green-400/30">
+                                    <Code2 className="w-6 h-6 text-green-900" />
+                                </div>
+                                <h3 className="text-2xl font-bold bg-gradient-to-r from-white via-green-100 to-emerald-100 bg-clip-text text-transparent">
+                                    Ronald Salili
+                                </h3>
+                            </div>
+                            <p className="text-green-200 mb-4 text-lg font-medium">
                                 Full-Stack Software Engineer
                             </p>
-                            <p className="text-green-300 text-sm leading-relaxed">
+                            <p className="text-green-300 leading-relaxed">
                                 Specializing in JavaScript, TypeScript, and
-                                modern web technologies.
+                                modern web technologies. Passionate about
+                                creating beautiful, functional applications that
+                                make a difference.
                             </p>
                         </div>
 
                         <div />
 
-                        {/* Contact Info */}
+                        {/* Enhanced Contact Info */}
                         <div>
-                            <h4 className="font-semibold mb-3 text-green-100">
+                            <h4 className="font-bold mb-6 text-green-100 text-lg">
                                 Contact Info
                             </h4>
-                            <div className="space-y-2 text-sm">
-                                <div className="flex items-center gap-2 text-green-300">
-                                    <Mail className="w-4 h-4" />
+                            <div className="space-y-4">
+                                <div className="flex items-center gap-3 text-green-300 p-3 bg-white/10 rounded-lg backdrop-blur-sm border border-green-400/20 hover:bg-white/15 transition-all duration-300">
+                                    <Mail className="w-5 h-5 text-green-400" />
                                     <Link
-                                        className="hover:text-white transition-colors"
+                                        className="hover:text-white transition-colors font-medium"
                                         to={`mailto:${EMAIL}`}
                                     >
                                         {EMAIL}
                                     </Link>
                                 </div>
-                                <div className="flex items-center gap-2 text-green-300">
-                                    <MapPin className="w-4 h-4" />
-                                    <span>Albuera, Leyte, Philippines</span>
+                                <div className="flex items-center gap-3 text-green-300 p-3 bg-white/10 rounded-lg backdrop-blur-sm border border-green-400/20">
+                                    <MapPin className="w-5 h-5 text-green-400" />
+                                    <span className="font-medium">
+                                        Albuera, Leyte, Philippines
+                                    </span>
                                 </div>
-                                <div className="flex items-center gap-2 text-green-300">
-                                    <Linkedin className="w-4 h-4" />
+                                <div className="flex items-center gap-3 text-green-300 p-3 bg-white/10 rounded-lg backdrop-blur-sm border border-green-400/20 hover:bg-white/15 transition-all duration-300">
+                                    <Linkedin className="w-5 h-5 text-green-400" />
                                     <Link
-                                        className="hover:text-white transition-colors"
+                                        className="hover:text-white transition-colors font-medium"
                                         target="_blank"
                                         to="https://www.linkedin.com/in/ronald-salili-b068a51b7"
                                     >
@@ -721,13 +761,13 @@ export default function Portfolio() {
                         </div>
                     </div>
 
-                    <Separator className="bg-green-800 mb-4" />
-
-                    <div className="flex flex-col md:flex-row justify-between items-center text-sm">
-                        <p className="text-green-200">
-                            © {new Date().getFullYear()} Ronald Salili. All
-                            rights reserved.
-                        </p>
+                    <div className="mt-12 pt-8 border-t border-green-700/30">
+                        <div className="flex flex-col md:flex-row justify-between items-center">
+                            <p className="text-green-300 font-medium text-center md:text-left">
+                                © {new Date().getFullYear()} Ronald Salili. All
+                                rights reserved.
+                            </p>
+                        </div>
                     </div>
                 </div>
             </footer>
