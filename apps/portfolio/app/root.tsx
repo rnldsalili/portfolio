@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import {
     isRouteErrorResponse,
     Links,
@@ -109,7 +110,10 @@ export function Layout({ children }: { children: React.ReactNode }) {
             </head>
             <body>
                 {children}
-                <ScrollRestoration />
+                <ScrollRestoration
+                    getKey={(location) => location.key}
+                    storageKey="scroll-positions"
+                />
                 <Scripts />
             </body>
         </html>
@@ -117,6 +121,29 @@ export function Layout({ children }: { children: React.ReactNode }) {
 }
 
 export default function App() {
+    useEffect(() => {
+        // Prevent scroll restoration conflicts by ensuring smooth scroll behavior
+        // only applies to intentional navigation, not page refreshes
+        const handleBeforeUnload = () => {
+            sessionStorage.setItem('isRefresh', 'true');
+        };
+
+        const handleLoad = () => {
+            // Clear the refresh flag after a short delay to allow scroll restoration
+            setTimeout(() => {
+                sessionStorage.removeItem('isRefresh');
+            }, 100);
+        };
+
+        window.addEventListener('beforeunload', handleBeforeUnload);
+        window.addEventListener('load', handleLoad);
+
+        return () => {
+            window.removeEventListener('beforeunload', handleBeforeUnload);
+            window.removeEventListener('load', handleLoad);
+        };
+    }, []);
+
     return <Outlet />;
 }
 

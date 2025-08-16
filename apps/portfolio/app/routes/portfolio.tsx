@@ -77,6 +77,7 @@ const EMAIL = 'ronaldsalili1@gmail.com';
 export default function Portfolio() {
     const [open, setOpen] = useState(false);
     const timelineRef = useRef<HTMLDivElement>(null);
+    const [isScrollRestored, setIsScrollRestored] = useState(false);
 
     const skills = {
         'Programming Languages': ['TypeScript', 'JavaScript', 'Python', 'Java'],
@@ -206,9 +207,55 @@ export default function Portfolio() {
         };
     }, []);
 
+    // Scroll position stabilization - prevents upward drift on refresh
+    useEffect(() => {
+        let initialScrollY = window.scrollY;
+
+        const stabilizeScroll = () => {
+            // Only run this once per page load
+            if (isScrollRestored) return;
+
+            const currentScrollY = window.scrollY;
+            const isRefresh = sessionStorage.getItem('isRefresh') === 'true';
+
+            // If this is a refresh and scroll position changed unexpectedly, restore it
+            if (isRefresh && Math.abs(currentScrollY - initialScrollY) > 5) {
+                window.scrollTo({
+                    top: initialScrollY,
+                    behavior: 'instant',
+                });
+            }
+
+            setIsScrollRestored(true);
+        };
+
+        // Wait for scroll restoration to complete
+        const timer = setTimeout(stabilizeScroll, 200);
+
+        // Also listen for any scroll events during initial load
+        const handleEarlyScroll = () => {
+            if (!isScrollRestored) {
+                initialScrollY = window.scrollY;
+            }
+        };
+
+        window.addEventListener('scroll', handleEarlyScroll, { passive: true });
+
+        return () => {
+            clearTimeout(timer);
+            window.removeEventListener('scroll', handleEarlyScroll);
+        };
+    }, [isScrollRestored]);
+
     // Smooth scroll implementation
     useEffect(() => {
         const handleAnchorClick = (e: MouseEvent) => {
+            // Check if this is a page refresh to avoid conflicts with scroll restoration
+            const isRefresh = sessionStorage.getItem('isRefresh') === 'true';
+            if (isRefresh) {
+                return;
+            }
+
             const target = e.target as HTMLElement;
             if (
                 target.tagName === 'A' &&
@@ -219,15 +266,22 @@ export default function Portfolio() {
                 const element = document.getElementById(id || '');
                 if (element) {
                     window.scrollTo({
-                        top: element.offsetTop - 80,
+                        top: element.offsetTop - 90,
                         behavior: 'smooth',
                     });
                 }
             }
         };
 
-        document.addEventListener('click', handleAnchorClick);
-        return () => document.removeEventListener('click', handleAnchorClick);
+        // Add a delay to ensure scroll restoration has completed
+        const timer = setTimeout(() => {
+            document.addEventListener('click', handleAnchorClick);
+        }, 150);
+
+        return () => {
+            clearTimeout(timer);
+            document.removeEventListener('click', handleAnchorClick);
+        };
     }, []);
 
     return (

@@ -169,6 +169,23 @@
         background-color: hsl(var(--background));
         color: hsl(var(--foreground));
     }
+
+    html {
+        scroll-behavior: smooth;
+        scroll-padding-top: 100px;
+    }
+
+    /* Prevent scroll restoration conflicts */
+    @media (prefers-reduced-motion: no-preference) {
+        html:focus-within {
+            scroll-behavior: smooth;
+        }
+    }
+
+    /* Stabilize scroll position during page load */
+    body.loading {
+        overflow-anchor: none;
+    }
 }
 
 /* Animation classes */
